@@ -16,11 +16,6 @@ namespace Filling
         public Form1()
         {
             InitializeComponent();
-            Point a = new Point(1, 2);
-            Point b = a.;
-            b.X = 3;
-            Debug.WriteLine(a);
-            Debug.WriteLine(b);
         }
 
     }

@@ -21,8 +21,8 @@ namespace Filling
 
         private void generateTriangulation()
         {
-            verices = new Point3D[2 ^ N + 2 ^ (2 * N - 1) + 1];
-            triangles = new int[4 ^ N, 3];
+            verices = new Point3D[(int)(Math.Pow(2, N) + Math.Pow(2, (2 * N - 1)) + 1)];
+            triangles = new int[(int)Math.Pow(4, N), 3];
             verices[0] = new Point3D(0, 0, R);
             verices[1] = new Point3D(R, 0, 0);
             verices[2] = new Point3D(0, R, 0);
@@ -46,14 +46,48 @@ namespace Filling
                 tindex++;
                 return;
             }
-            Point3D w_0 = R*(verices[v_0] + verices[v_1])/;
-            Point3D w_1 = 
-            Point3D w_2 = 
+            Point3D w_0 = R * (verices[v_0] + verices[v_1]) / Point3D.Dist(verices[v_0] + verices[v_1]);
+            Point3D w_1 = R * (verices[v_1] + verices[v_2]) / Point3D.Dist(verices[v_1] + verices[v_2]);
+            Point3D w_2 = R * (verices[v_2] + verices[v_0]) / Point3D.Dist(verices[v_0] + verices[v_1]);
+
+            int w_0index = vindex;
+            verices[vindex++] = w_0;
+            int w_1index = vindex;
+            verices[vindex++] = w_1;
+            int w_2index = vindex;
+            verices[vindex++] = w_2;
+
+            recursion(v_0, w_0index, w_2index, n + 1, ref vindex, ref tindex);
+            recursion(w_0index, v_1, w_1index, n + 1, ref vindex, ref tindex);
+            recursion(w_2index, w_1index, v_2, n + 1, ref vindex, ref tindex);
+            recursion(w_1index, w_2index, w_0index, n + 1, ref vindex, ref tindex);
         }
 
-        public DrawTriangulation(Action<Point[]> drawTriangle)
+        public void DrawTriangulation(Action<Point,Point> drawLine)
         {
+            for (int i = 0; i < triangles.GetLength(0); i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (triangles[i, j] < triangles[i, (j + 1) % 3])
+                    {
+                        drawLine(verices[triangles[i, j]], verices[triangles[i, (j + 1) % 3]]);
+                    }
+                }
+            }
+        }
 
+        public void FillTriangulation(Action<Point[]> fillTriangle)
+        {
+            for (int i = 0; i < triangles.GetLength(0); i++)
+            {
+                fillTriangle(new Point[]
+                {
+                    verices[triangles[i,0]],
+                    verices[triangles[i,1]],
+                    verices[triangles[i,2]]
+                });
+            }
         }
 
         private Point3D[] verices;
