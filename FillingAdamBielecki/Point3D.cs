@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 
 namespace Filling
@@ -23,6 +24,9 @@ namespace Filling
         public static Point3D operator +(Point3D a, Point3D b)
         => new Point3D(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
 
+        public static Point3D operator +(Point3D a, Point b)
+        => new Point3D(a.X + b.X, a.Y + b.Y, a.Z);
+
         public static Point3D operator *(int a, Point3D b)
         => new Point3D(a * b.X, a * b.Y, a * b.Z);
 
@@ -34,7 +38,12 @@ namespace Filling
 
         public static double Dist(Point3D a)
         {
-            return Math.Sqrt(a.X * a.X + a.Y * a.Y + a.Z * a.X);
+            return Math.Sqrt(a.X * a.X + a.Y * a.Y + a.Z * a.Z);
+        }
+
+        public override string ToString()
+        {
+            return $"({X}, {Y}, {Z})";
         }
     }
 }

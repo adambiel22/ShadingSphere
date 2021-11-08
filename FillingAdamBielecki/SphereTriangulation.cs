@@ -17,6 +17,7 @@ namespace Filling
             N = n;
             R = r;
             MidPoint = midPoint;
+            generateTriangulation();
         }
 
         private void generateTriangulation()
@@ -34,6 +35,10 @@ namespace Filling
             recursion(2, 3, 0, 1, ref vindex, ref tindex);
             recursion(3, 4, 0, 1, ref vindex, ref tindex);
             recursion(4, 1, 0, 1, ref vindex, ref tindex);
+            for (int i = 0; i < verices.Length; i++) 
+            {
+                verices[i] = verices[i] + MidPoint;
+            }
         }
 
         private void recursion(int v_0, int v_1, int v_2, int n, ref int vindex, ref int tindex)
@@ -63,16 +68,16 @@ namespace Filling
             recursion(w_1index, w_2index, w_0index, n + 1, ref vindex, ref tindex);
         }
 
-        public void DrawTriangulation(Action<Point,Point> drawLine)
+        public void DrawTriangulation(Action<Point, Point> drawLine)
         {
             for (int i = 0; i < triangles.GetLength(0); i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (triangles[i, j] < triangles[i, (j + 1) % 3])
-                    {
+                    //if (triangles[i, j] < triangles[i, (j + 1) % 3])
+                    
                         drawLine(verices[triangles[i, j]], verices[triangles[i, (j + 1) % 3]]);
-                    }
+                    
                 }
             }
         }

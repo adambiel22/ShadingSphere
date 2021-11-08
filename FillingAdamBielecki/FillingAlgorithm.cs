@@ -36,7 +36,7 @@ namespace Edytor.OnlyGeometry
                 (this.X - other.X < 0 ? -1 : 1);
             }
         }
-        public static void FillPolygon(Point[] points, Action<int,int> putPixel )
+        public static void FillPlainPolygon(Point[] points, Action<int, int, Color> putPixel, Color color)
         {
             int n = points.Length;
             int[] ind = new int[n];
@@ -84,7 +84,7 @@ namespace Edytor.OnlyGeometry
                 {
                     for (int x = (int)AET[i].X + 1; x < AET[(i + 1)].X; x++)
                     {
-                        putPixel(x, y);
+                        putPixel(x, y, color);
                     }
                 }
 
