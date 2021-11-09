@@ -9,7 +9,7 @@ namespace Filling
 {
     public static class NormalVectors
     {
-        public static Vector3D SphereHalf(double x, double y, double R, Point midPoint)
+        public static Vector3D SphereHalfNormalVector(double x, double y, double R, Point midPoint)
         {
             if ((x - midPoint.X) * (x - midPoint.X) + (y - midPoint.Y) * (y - midPoint.Y) > R * R)
             {

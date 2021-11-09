@@ -22,12 +22,12 @@ namespace Filling
 
         private void generateTriangulation()
         {
-            triangles = new Point3D[(int)Math.Pow(4, N), 3];
-            Point3D v_0 = new Point3D(0, 0, R);
-            Point3D v_1 = new Point3D(R, 0, 0);
-            Point3D v_2 = new Point3D(0, R, 0);
-            Point3D v_3 = new Point3D(-R, 0, 0);
-            Point3D v_4 = new Point3D(0, -R, 0);
+            triangles = new FPoint3D[(int)Math.Pow(4, N), 3];
+            FPoint3D v_0 = new FPoint3D(0, 0, R);
+            FPoint3D v_1 = new FPoint3D(R, 0, 0);
+            FPoint3D v_2 = new FPoint3D(0, R, 0);
+            FPoint3D v_3 = new FPoint3D(-R, 0, 0);
+            FPoint3D v_4 = new FPoint3D(0, -R, 0);
             int tindex = 0;
             recursion(v_1, v_2, v_0, 1, ref tindex);
             recursion(v_2, v_3, v_0, 1, ref tindex);
@@ -42,7 +42,7 @@ namespace Filling
             }
         }
 
-        private void recursion(Point3D v_0, Point3D v_1, Point3D v_2, int n, ref int tindex)
+        private void recursion(FPoint3D v_0, FPoint3D v_1, FPoint3D v_2, int n, ref int tindex)
         {
             if (n == N)
             {
@@ -53,9 +53,9 @@ namespace Filling
                 return;
             }
 
-            Point3D w_0 = R * (v_0 + v_1) / Point3D.Dist(v_0 + v_1);
-            Point3D w_1 = R * (v_1 + v_2) / Point3D.Dist(v_1 + v_2);
-            Point3D w_2 = R * (v_2 + v_0) / Point3D.Dist(v_0 + v_1);
+            FPoint3D w_0 = R * (v_0 + v_1) / FPoint3D.Dist(v_0 + v_1);
+            FPoint3D w_1 = R * (v_1 + v_2) / FPoint3D.Dist(v_1 + v_2);
+            FPoint3D w_2 = R * (v_2 + v_0) / FPoint3D.Dist(v_2 + v_0);
 
             recursion(v_0, w_0, w_2, n + 1, ref tindex);
             recursion(w_0, v_1, w_1, n + 1, ref tindex);
@@ -87,6 +87,6 @@ namespace Filling
             }
         }
 
-        private Point3D[,] triangles;
+        private FPoint3D[,] triangles;
     }
 }

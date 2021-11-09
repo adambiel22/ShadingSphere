@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Drawing;
 
-namespace Edytor.OnlyGeometry
+namespace Filling
 {
     public static class FillingAlgorithm
     {
@@ -36,7 +36,7 @@ namespace Edytor.OnlyGeometry
                 (this.X - other.X < 0 ? -1 : 1);
             }
         }
-        public static void FillPlainPolygon(Point[] points, Action<int, int, Color> putPixel, Color color)
+        public static void FillPolygon(Point[] points, Action<int, int, Color> putPixel, Func<int, int, Color> colorFunc)
         {
             int n = points.Length;
             int[] ind = new int[n];
@@ -84,7 +84,7 @@ namespace Edytor.OnlyGeometry
                 {
                     for (int x = (int)AET[i].X + 1; x < AET[(i + 1)].X; x++)
                     {
-                        putPixel(x, y, color);
+                        putPixel(x, y, colorFunc(x, y));
                     }
                 }
 
@@ -93,6 +93,11 @@ namespace Edytor.OnlyGeometry
                     i.Increment();
                 }
             }
+        }
+
+        public static void FillPlainPolygon(Point[] points, Action<int, int, Color> putPixel, Color color)
+        {
+            FillPolygon(points, putPixel, (int x, int y) => color);
         }
     }
 }
