@@ -36,6 +36,7 @@ namespace Filling
             return (a * b) / a.Norm / b.Norm;
         }
 
+
         public override string ToString()
         {
             return $"[{X}, {Y}, {Z}]";

@@ -41,6 +41,11 @@ namespace Filling
             return Math.Sqrt(a.X * a.X + a.Y * a.Y + a.Z * a.Z);
         }
 
+        public static int CrossProduct(Point3D p0, Point3D p1, Point3D p2)
+        {
+            return (p1.X - p0.X) * (p2.Y - p0.Y) - (p2.X - p0.X) * (p1.Y - p0.Y);
+        }
+
         public override string ToString()
         {
             return $"({X}, {Y}, {Z})";

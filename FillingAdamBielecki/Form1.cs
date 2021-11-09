@@ -23,7 +23,7 @@ namespace Filling
             LockBitmap lockBitmap = new LockBitmap(triangulationVisualization);
             lockBitmap.LockBits();
             SphereTriangulation triangulation = 
-                new SphereTriangulation(2, 100, new Point(pictureBox.Width / 2, pictureBox.Height / 2));
+                new SphereTriangulation(4, 300, new Point(pictureBox.Width / 2, pictureBox.Height / 2));
             triangulation.DrawTriangulation(
                 (Point p1, Point p2) => 
                 { DrawingLine.DrawLine(p1, p2, lockBitmap.SetPixel, Color.Black); });
@@ -50,6 +50,21 @@ namespace Filling
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            Bitmap triangulationVisualization = new Bitmap(pictureBox.Width, pictureBox.Height, PixelFormat.Format32bppArgb);
+            LockBitmap lockBitmap = new LockBitmap(triangulationVisualization);
+            lockBitmap.LockBits();
+            SphereTriangulation triangulation =
+                new SphereTriangulation(trackBar1.Value, 300, new Point(pictureBox.Width / 2, pictureBox.Height / 2));
+            triangulation.DrawTriangulation(
+                (Point p1, Point p2) =>
+                { DrawingLine.DrawLine(p1, p2, lockBitmap.SetPixel, Color.Black); });
+            lockBitmap.UnlockBits();
+            triangulationVisualization.Save("triangulaion.bmp", ImageFormat.Bmp);
+            pictureBox.Image = triangulationVisualization;
         }
     }
 }
