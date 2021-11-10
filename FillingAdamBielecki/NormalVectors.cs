@@ -37,7 +37,7 @@ namespace Filling
         {
             if (pixelLocation.X == 605 && pixelLocation.Y == 307)
             {
-                Debug.WriteLine((pixelLocation.X, pixelLocation.Y));
+                //Debug.WriteLine((pixelLocation.X, pixelLocation.Y));
             }
             normalVector = normalVector / normalVector.Norm;
             Vector3D L = lightLocation - pixelLocation;

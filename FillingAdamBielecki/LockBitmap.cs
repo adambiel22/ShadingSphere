@@ -144,12 +144,6 @@ namespace Filling
             // Get color components count
             int cCount = Depth / 8;
 
-            if (x == 440 && y == 340 )
-            {
-                Debug.WriteLine((x, y));
-            }
-            
-
             // Get start index of the specified pixel
             int i = ((y * Width) + x) * cCount;
 

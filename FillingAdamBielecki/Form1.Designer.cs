@@ -29,6 +29,7 @@ namespace Filling
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.triangulationTrackBar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@ namespace Filling
             this.k_dLabel = new System.Windows.Forms.Label();
             this.k_sLabel = new System.Windows.Forms.Label();
             this.mLabel = new System.Windows.Forms.Label();
+            this.lightSourceTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).BeginInit();
@@ -75,18 +77,18 @@ namespace Filling
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(949, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 20);
+            this.label1.Size = new System.Drawing.Size(153, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Triangulation";
+            this.label1.Text = "Triangulation depth =";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(949, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 20);
+            this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "K_d";
+            this.label2.Text = "K_d = ";
             // 
             // k_dTrackBar
             // 
@@ -102,9 +104,9 @@ namespace Filling
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(949, 222);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 20);
+            this.label3.Size = new System.Drawing.Size(48, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "K_s";
+            this.label3.Text = "K_s = ";
             // 
             // k_sTrackBar
             // 
@@ -132,41 +134,51 @@ namespace Filling
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(952, 299);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(22, 20);
+            this.label4.Size = new System.Drawing.Size(40, 20);
             this.label4.TabIndex = 8;
-            this.label4.Text = "M";
+            this.label4.Text = "M = ";
             // 
             // triangulationLabel
             // 
             this.triangulationLabel.AutoSize = true;
-            this.triangulationLabel.Location = new System.Drawing.Point(1051, 67);
+            this.triangulationLabel.Location = new System.Drawing.Point(1108, 67);
             this.triangulationLabel.Name = "triangulationLabel";
-            this.triangulationLabel.Size = new System.Drawing.Size(0, 20);
+            this.triangulationLabel.Size = new System.Drawing.Size(17, 20);
             this.triangulationLabel.TabIndex = 9;
+            this.triangulationLabel.Text = "a";
             // 
             // k_dLabel
             // 
             this.k_dLabel.AutoSize = true;
-            this.k_dLabel.Location = new System.Drawing.Point(989, 140);
+            this.k_dLabel.Location = new System.Drawing.Point(1006, 140);
             this.k_dLabel.Name = "k_dLabel";
-            this.k_dLabel.Size = new System.Drawing.Size(0, 20);
+            this.k_dLabel.Size = new System.Drawing.Size(17, 20);
             this.k_dLabel.TabIndex = 10;
+            this.k_dLabel.Text = "a";
             // 
             // k_sLabel
             // 
             this.k_sLabel.AutoSize = true;
-            this.k_sLabel.Location = new System.Drawing.Point(986, 226);
+            this.k_sLabel.Location = new System.Drawing.Point(1003, 222);
             this.k_sLabel.Name = "k_sLabel";
-            this.k_sLabel.Size = new System.Drawing.Size(0, 20);
+            this.k_sLabel.Size = new System.Drawing.Size(17, 20);
             this.k_sLabel.TabIndex = 11;
+            this.k_sLabel.Text = "a";
             // 
             // mLabel
             // 
             this.mLabel.AutoSize = true;
-            this.mLabel.Location = new System.Drawing.Point(980, 299);
+            this.mLabel.Location = new System.Drawing.Point(998, 299);
             this.mLabel.Name = "mLabel";
-            this.mLabel.Size = new System.Drawing.Size(0, 20);
+            this.mLabel.Size = new System.Drawing.Size(17, 20);
             this.mLabel.TabIndex = 12;
+            this.mLabel.Text = "a";
+            // 
+            // lightSourceTimer
+            // 
+            this.lightSourceTimer.Enabled = true;
+            this.lightSourceTimer.Interval = 1000;
+            this.lightSourceTimer.Tick += new System.EventHandler(this.lightSourceTimer_Tick);
             // 
             // Form1
             // 
@@ -188,7 +200,6 @@ namespace Filling
             this.Controls.Add(this.pictureBox);
             this.Name = "Form1";
             this.Text = "Save bitmap";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).EndInit();
@@ -214,6 +225,7 @@ namespace Filling
         private System.Windows.Forms.Label k_dLabel;
         private System.Windows.Forms.Label k_sLabel;
         private System.Windows.Forms.Label mLabel;
+        private System.Windows.Forms.Timer lightSourceTimer;
     }
 }
 

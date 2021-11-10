@@ -17,5 +17,9 @@ namespace Filling
             Position = position;
             LightColor = lightColor;
         }
+        public LightSource(Color lightColor)
+        {
+            LightColor = lightColor;
+        }
     }
 }

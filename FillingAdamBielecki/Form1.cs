@@ -17,8 +17,10 @@ namespace Filling
         SphereTriangulation sphereTriangulation;
         SurfaceSettings surfaceSettings;
         LightSource lightSource;
+        SpiralLightSourceMover mover;
         int r = 300;
         Point midPoint;
+        int time;
 
         public Form1()
         {
@@ -28,10 +30,13 @@ namespace Filling
             k_sTrackBar.Value = 58;
             k_dTrackBar.Value = 50;
             triangulationTrackBar.Value = 4;
+            time = 0;
+            lightSourceTimer.Interval = 10;
 
             midPoint = new Point(pictureBox.Width / 2, pictureBox.Height / 2);
-            Vector3D lightSourcePosition = new Vector3D(midPoint.X + 100, midPoint.Y + 100, r + 1000);
+            Vector3D lightSourcePosition = new Vector3D(midPoint.X, midPoint.Y, r + 1000);
             lightSource = new LightSource(lightSourcePosition, Color.White);
+            mover = new SpiralLightSourceMover(lightSourcePosition, Math.PI / 5, 20);
             surfaceSettings = new SurfaceSettings((double)k_dTrackBar.Value / k_dTrackBar.Maximum, (double)k_sTrackBar.Value / k_sTrackBar.Maximum, Color.Red, mTrackBar.Value);
             sphereTriangulation = new SphereTriangulation(triangulationTrackBar.Value, r, midPoint);
 
@@ -46,12 +51,6 @@ namespace Filling
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             Debug.WriteLine(e.Location);
-            //Bitmap bitmap = new Bitmap(pictureBox.Image);
-            //FastBitmap fastBitmap = new FastBitmap(bitmap);
-            //fastBitmap.WriteLock(e.X, e.Y, 15, 15);
-            //fastBitmap.ClearRectangle(Color.Red);
-            //fastBitmap.UnlockBits();
-            //bitmap.Save("bitmap.bmp", ImageFormat.Bmp);
         }
 
         private void paintSphere()
@@ -79,11 +78,6 @@ namespace Filling
             pictureBox.Image = triangulationVisualization;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void k_dTrackBar_Scroll(object sender, EventArgs e)
         {
             surfaceSettings.K_d = (double)k_dTrackBar.Value / k_dTrackBar.Maximum;
@@ -109,6 +103,15 @@ namespace Filling
         {
             surfaceSettings.M = mTrackBar.Value;
             mLabel.Text = mTrackBar.Value.ToString();
+            paintSphere();
+        }
+
+        private void lightSourceTimer_Tick(object sender, EventArgs e)
+        {
+            time = (time + 1) % 720;
+            mover.Move(lightSource, time);
+            Debug.WriteLine("Move!");
+            Debug.WriteLine(lightSource.Position);
             paintSphere();
         }
     }
