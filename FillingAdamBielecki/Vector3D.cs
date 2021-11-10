@@ -29,8 +29,10 @@ namespace Filling
         public static Vector3D operator *(double a, Vector3D b)
             => new Vector3D(a * b.X, a * b.Y, a * b.Z);
         public static Vector3D operator /(Vector3D a, double b)
-            => new Vector3D((int)(a.X / b), (int)(a.Y / b), (int)(a.Z / b));
-        
+            => new Vector3D(a.X / b, a.Y / b, a.Z / b);
+        public static implicit operator FPoint3D(Vector3D a)
+            => new FPoint3D(a.X, a.Y, a.Z);
+
         public static double cos(Vector3D a, Vector3D b)
         {
             return (a * b) / a.Norm / b.Norm;

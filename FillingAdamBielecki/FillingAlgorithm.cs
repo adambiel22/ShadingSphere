@@ -84,7 +84,8 @@ namespace Filling
                 {
                     for (int x = (int)AET[i].X + 1; x < AET[(i + 1)].X; x++)
                     {
-                        putPixel(x, y, colorFunc(x, y));
+                        Color color = colorFunc(x, y);
+                        putPixel(x, y, color);
                     }
                 }
 

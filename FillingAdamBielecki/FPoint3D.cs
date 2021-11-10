@@ -36,6 +36,9 @@ namespace Filling
         public static implicit operator System.Drawing.Point(FPoint3D a)
             => new System.Drawing.Point((int)a.X, (int)a.Y);
 
+        public static implicit operator Vector3D(FPoint3D a)
+            => new Vector3D(a.X, a.Y, a.Z);
+
         public static double Dist(FPoint3D a)
         {
             return Math.Sqrt(a.X * a.X + a.Y * a.Y + a.Z * a.Z);
