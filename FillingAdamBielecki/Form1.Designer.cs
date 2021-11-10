@@ -32,7 +32,6 @@ namespace Filling
             this.components = new System.ComponentModel.Container();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.triangulationTrackBar = new System.Windows.Forms.TrackBar();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.k_dTrackBar = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,11 +43,43 @@ namespace Filling
             this.k_sLabel = new System.Windows.Forms.Label();
             this.mLabel = new System.Windows.Forms.Label();
             this.lightSourceTimer = new System.Windows.Forms.Timer(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.backgroundFromImageButton = new System.Windows.Forms.Button();
+            this.plainColorButton = new System.Windows.Forms.Button();
+            this.interpolationCheckBox = new System.Windows.Forms.CheckBox();
+            this.backgroundFromImageRadioButton2 = new System.Windows.Forms.RadioButton();
+            this.plainColorRadioButton = new System.Windows.Forms.RadioButton();
+            this.lightColorButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.normalMapFromImageRadioButton = new System.Windows.Forms.RadioButton();
+            this.withoutRadioButton = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.velocityLabel = new System.Windows.Forms.Label();
+            this.fpsLabel = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.heightTrackBar = new System.Windows.Forms.TrackBar();
+            this.label8 = new System.Windows.Forms.Label();
+            this.fpsTrackBar = new System.Windows.Forms.TrackBar();
+            this.label7 = new System.Windows.Forms.Label();
+            this.heightLabel = new System.Windows.Forms.Label();
+            this.velocityTrackBar = new System.Windows.Forms.TrackBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.triangulationCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_sTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mTrackBar)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fpsTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.velocityTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -56,92 +87,86 @@ namespace Filling
             this.pictureBox.BackColor = System.Drawing.Color.Gray;
             this.pictureBox.Location = new System.Drawing.Point(12, 12);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(884, 661);
+            this.pictureBox.Size = new System.Drawing.Size(860, 948);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
             // triangulationTrackBar
             // 
             this.triangulationTrackBar.LargeChange = 1;
-            this.triangulationTrackBar.Location = new System.Drawing.Point(949, 90);
+            this.triangulationTrackBar.Location = new System.Drawing.Point(6, 56);
             this.triangulationTrackBar.Maximum = 6;
             this.triangulationTrackBar.Minimum = 1;
             this.triangulationTrackBar.Name = "triangulationTrackBar";
-            this.triangulationTrackBar.Size = new System.Drawing.Size(261, 56);
+            this.triangulationTrackBar.Size = new System.Drawing.Size(239, 56);
             this.triangulationTrackBar.TabIndex = 1;
             this.triangulationTrackBar.Value = 2;
             this.triangulationTrackBar.Scroll += new System.EventHandler(this.triangulationTrackBar_Scroll);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(949, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Triangulation depth =";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(949, 140);
+            this.label2.Location = new System.Drawing.Point(6, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 20);
+            this.label2.Size = new System.Drawing.Size(27, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "K_d = ";
+            this.label2.Text = "Kd";
             // 
             // k_dTrackBar
             // 
-            this.k_dTrackBar.Location = new System.Drawing.Point(949, 163);
+            this.k_dTrackBar.Location = new System.Drawing.Point(6, 115);
             this.k_dTrackBar.Maximum = 100;
             this.k_dTrackBar.Name = "k_dTrackBar";
-            this.k_dTrackBar.Size = new System.Drawing.Size(261, 56);
+            this.k_dTrackBar.Size = new System.Drawing.Size(239, 56);
             this.k_dTrackBar.TabIndex = 4;
+            this.k_dTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.k_dTrackBar.Scroll += new System.EventHandler(this.k_dTrackBar_Scroll);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(949, 222);
+            this.label3.Location = new System.Drawing.Point(6, 151);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.Size = new System.Drawing.Size(24, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "K_s = ";
+            this.label3.Text = "Ks";
             // 
             // k_sTrackBar
             // 
-            this.k_sTrackBar.Location = new System.Drawing.Point(949, 245);
+            this.k_sTrackBar.Location = new System.Drawing.Point(6, 177);
             this.k_sTrackBar.Maximum = 100;
             this.k_sTrackBar.Name = "k_sTrackBar";
-            this.k_sTrackBar.Size = new System.Drawing.Size(261, 56);
+            this.k_sTrackBar.Size = new System.Drawing.Size(239, 56);
             this.k_sTrackBar.TabIndex = 6;
+            this.k_sTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.k_sTrackBar.Value = 80;
             this.k_sTrackBar.Scroll += new System.EventHandler(this.k_sTrackBar_Scroll);
             // 
             // mTrackBar
             // 
-            this.mTrackBar.Location = new System.Drawing.Point(949, 322);
+            this.mTrackBar.Location = new System.Drawing.Point(6, 239);
             this.mTrackBar.Maximum = 100;
             this.mTrackBar.Minimum = 1;
             this.mTrackBar.Name = "mTrackBar";
-            this.mTrackBar.Size = new System.Drawing.Size(261, 56);
+            this.mTrackBar.Size = new System.Drawing.Size(239, 56);
             this.mTrackBar.TabIndex = 7;
+            this.mTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.mTrackBar.Value = 1;
             this.mTrackBar.Scroll += new System.EventHandler(this.mTrackBar_Scroll);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(952, 299);
+            this.label4.Location = new System.Drawing.Point(6, 213);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 20);
+            this.label4.Size = new System.Drawing.Size(22, 20);
             this.label4.TabIndex = 8;
-            this.label4.Text = "M = ";
+            this.label4.Text = "M";
             // 
             // triangulationLabel
             // 
             this.triangulationLabel.AutoSize = true;
-            this.triangulationLabel.Location = new System.Drawing.Point(1108, 67);
+            this.triangulationLabel.Location = new System.Drawing.Point(245, 56);
             this.triangulationLabel.Name = "triangulationLabel";
             this.triangulationLabel.Size = new System.Drawing.Size(17, 20);
             this.triangulationLabel.TabIndex = 9;
@@ -150,7 +175,7 @@ namespace Filling
             // k_dLabel
             // 
             this.k_dLabel.AutoSize = true;
-            this.k_dLabel.Location = new System.Drawing.Point(1006, 140);
+            this.k_dLabel.Location = new System.Drawing.Point(245, 115);
             this.k_dLabel.Name = "k_dLabel";
             this.k_dLabel.Size = new System.Drawing.Size(17, 20);
             this.k_dLabel.TabIndex = 10;
@@ -159,7 +184,7 @@ namespace Filling
             // k_sLabel
             // 
             this.k_sLabel.AutoSize = true;
-            this.k_sLabel.Location = new System.Drawing.Point(1003, 222);
+            this.k_sLabel.Location = new System.Drawing.Point(244, 177);
             this.k_sLabel.Name = "k_sLabel";
             this.k_sLabel.Size = new System.Drawing.Size(17, 20);
             this.k_sLabel.TabIndex = 11;
@@ -168,7 +193,7 @@ namespace Filling
             // mLabel
             // 
             this.mLabel.AutoSize = true;
-            this.mLabel.Location = new System.Drawing.Point(998, 299);
+            this.mLabel.Location = new System.Drawing.Point(244, 239);
             this.mLabel.Name = "mLabel";
             this.mLabel.Size = new System.Drawing.Size(17, 20);
             this.mLabel.TabIndex = 12;
@@ -180,33 +205,310 @@ namespace Filling
             this.lightSourceTimer.Interval = 1000;
             this.lightSourceTimer.Tick += new System.EventHandler(this.lightSourceTimer_Tick);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Light color";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.backgroundFromImageButton);
+            this.groupBox1.Controls.Add(this.plainColorButton);
+            this.groupBox1.Controls.Add(this.interpolationCheckBox);
+            this.groupBox1.Controls.Add(this.backgroundFromImageRadioButton2);
+            this.groupBox1.Controls.Add(this.plainColorRadioButton);
+            this.groupBox1.Location = new System.Drawing.Point(924, 29);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(283, 154);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Object background";
+            // 
+            // backgroundFromImageButton
+            // 
+            this.backgroundFromImageButton.Location = new System.Drawing.Point(145, 73);
+            this.backgroundFromImageButton.Name = "backgroundFromImageButton";
+            this.backgroundFromImageButton.Size = new System.Drawing.Size(94, 29);
+            this.backgroundFromImageButton.TabIndex = 16;
+            this.backgroundFromImageButton.Text = "Select";
+            this.backgroundFromImageButton.UseVisualStyleBackColor = true;
+            // 
+            // plainColorButton
+            // 
+            this.plainColorButton.BackColor = System.Drawing.Color.White;
+            this.plainColorButton.Location = new System.Drawing.Point(145, 34);
+            this.plainColorButton.Name = "plainColorButton";
+            this.plainColorButton.Size = new System.Drawing.Size(94, 29);
+            this.plainColorButton.TabIndex = 15;
+            this.plainColorButton.UseVisualStyleBackColor = false;
+            // 
+            // interpolationCheckBox
+            // 
+            this.interpolationCheckBox.AutoSize = true;
+            this.interpolationCheckBox.Location = new System.Drawing.Point(6, 115);
+            this.interpolationCheckBox.Name = "interpolationCheckBox";
+            this.interpolationCheckBox.Size = new System.Drawing.Size(117, 24);
+            this.interpolationCheckBox.TabIndex = 2;
+            this.interpolationCheckBox.Text = "Interpolation";
+            this.interpolationCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // backgroundFromImageRadioButton2
+            // 
+            this.backgroundFromImageRadioButton2.AutoSize = true;
+            this.backgroundFromImageRadioButton2.Location = new System.Drawing.Point(6, 75);
+            this.backgroundFromImageRadioButton2.Name = "backgroundFromImageRadioButton2";
+            this.backgroundFromImageRadioButton2.Size = new System.Drawing.Size(110, 24);
+            this.backgroundFromImageRadioButton2.TabIndex = 1;
+            this.backgroundFromImageRadioButton2.TabStop = true;
+            this.backgroundFromImageRadioButton2.Text = "From image";
+            this.backgroundFromImageRadioButton2.UseVisualStyleBackColor = true;
+            // 
+            // plainColorRadioButton
+            // 
+            this.plainColorRadioButton.AutoSize = true;
+            this.plainColorRadioButton.Location = new System.Drawing.Point(6, 38);
+            this.plainColorRadioButton.Name = "plainColorRadioButton";
+            this.plainColorRadioButton.Size = new System.Drawing.Size(100, 24);
+            this.plainColorRadioButton.TabIndex = 0;
+            this.plainColorRadioButton.TabStop = true;
+            this.plainColorRadioButton.Text = "Plain color";
+            this.plainColorRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // lightColorButton
+            // 
+            this.lightColorButton.BackColor = System.Drawing.Color.White;
+            this.lightColorButton.Location = new System.Drawing.Point(145, 26);
+            this.lightColorButton.Name = "lightColorButton";
+            this.lightColorButton.Size = new System.Drawing.Size(94, 29);
+            this.lightColorButton.TabIndex = 3;
+            this.lightColorButton.UseVisualStyleBackColor = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.normalMapFromImageRadioButton);
+            this.groupBox2.Controls.Add(this.withoutRadioButton);
+            this.groupBox2.Location = new System.Drawing.Point(924, 189);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(283, 125);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Normal Map";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(145, 74);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Select";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // normalMapFromImageRadioButton
+            // 
+            this.normalMapFromImageRadioButton.AutoSize = true;
+            this.normalMapFromImageRadioButton.Location = new System.Drawing.Point(6, 76);
+            this.normalMapFromImageRadioButton.Name = "normalMapFromImageRadioButton";
+            this.normalMapFromImageRadioButton.Size = new System.Drawing.Size(110, 24);
+            this.normalMapFromImageRadioButton.TabIndex = 18;
+            this.normalMapFromImageRadioButton.TabStop = true;
+            this.normalMapFromImageRadioButton.Text = "From image";
+            this.normalMapFromImageRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // withoutRadioButton
+            // 
+            this.withoutRadioButton.AutoSize = true;
+            this.withoutRadioButton.Location = new System.Drawing.Point(6, 37);
+            this.withoutRadioButton.Name = "withoutRadioButton";
+            this.withoutRadioButton.Size = new System.Drawing.Size(83, 24);
+            this.withoutRadioButton.TabIndex = 17;
+            this.withoutRadioButton.TabStop = true;
+            this.withoutRadioButton.Text = "Without";
+            this.withoutRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.triangulationCheckBox);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.mTrackBar);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.mLabel);
+            this.groupBox3.Controls.Add(this.k_sTrackBar);
+            this.groupBox3.Controls.Add(this.triangulationLabel);
+            this.groupBox3.Controls.Add(this.k_dLabel);
+            this.groupBox3.Controls.Add(this.k_sLabel);
+            this.groupBox3.Controls.Add(this.triangulationTrackBar);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.k_dTrackBar);
+            this.groupBox3.Location = new System.Drawing.Point(924, 320);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(283, 299);
+            this.groupBox3.TabIndex = 16;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Surface";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.velocityLabel);
+            this.groupBox4.Controls.Add(this.fpsLabel);
+            this.groupBox4.Controls.Add(this.checkBox1);
+            this.groupBox4.Controls.Add(this.heightTrackBar);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.fpsTrackBar);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.heightLabel);
+            this.groupBox4.Controls.Add(this.velocityTrackBar);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.lightColorButton);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Location = new System.Drawing.Point(924, 625);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(283, 309);
+            this.groupBox4.TabIndex = 17;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Light Source";
+            // 
+            // velocityLabel
+            // 
+            this.velocityLabel.AutoSize = true;
+            this.velocityLabel.Location = new System.Drawing.Point(245, 242);
+            this.velocityLabel.Name = "velocityLabel";
+            this.velocityLabel.Size = new System.Drawing.Size(17, 20);
+            this.velocityLabel.TabIndex = 23;
+            this.velocityLabel.Text = "a";
+            // 
+            // fpsLabel
+            // 
+            this.fpsLabel.AutoSize = true;
+            this.fpsLabel.Location = new System.Drawing.Point(244, 180);
+            this.fpsLabel.Name = "fpsLabel";
+            this.fpsLabel.Size = new System.Drawing.Size(17, 20);
+            this.fpsLabel.TabIndex = 22;
+            this.fpsLabel.Text = "a";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(8, 125);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(100, 24);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.Text = "Animation";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // heightTrackBar
+            // 
+            this.heightTrackBar.Location = new System.Drawing.Point(6, 86);
+            this.heightTrackBar.Maximum = 1000;
+            this.heightTrackBar.Minimum = 300;
+            this.heightTrackBar.Name = "heightTrackBar";
+            this.heightTrackBar.Size = new System.Drawing.Size(239, 56);
+            this.heightTrackBar.TabIndex = 21;
+            this.heightTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.heightTrackBar.Value = 500;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 216);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 20);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Velocity";
+            // 
+            // fpsTrackBar
+            // 
+            this.fpsTrackBar.Location = new System.Drawing.Point(6, 180);
+            this.fpsTrackBar.Maximum = 100;
+            this.fpsTrackBar.Minimum = 1;
+            this.fpsTrackBar.Name = "fpsTrackBar";
+            this.fpsTrackBar.Size = new System.Drawing.Size(239, 56);
+            this.fpsTrackBar.TabIndex = 19;
+            this.fpsTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.fpsTrackBar.Value = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 157);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "FPS";
+            // 
+            // heightLabel
+            // 
+            this.heightLabel.AutoSize = true;
+            this.heightLabel.Location = new System.Drawing.Point(244, 86);
+            this.heightLabel.Name = "heightLabel";
+            this.heightLabel.Size = new System.Drawing.Size(17, 20);
+            this.heightLabel.TabIndex = 13;
+            this.heightLabel.Text = "a";
+            // 
+            // velocityTrackBar
+            // 
+            this.velocityTrackBar.Location = new System.Drawing.Point(8, 242);
+            this.velocityTrackBar.Maximum = 1000;
+            this.velocityTrackBar.Minimum = 300;
+            this.velocityTrackBar.Name = "velocityTrackBar";
+            this.velocityTrackBar.Size = new System.Drawing.Size(239, 56);
+            this.velocityTrackBar.TabIndex = 13;
+            this.velocityTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.velocityTrackBar.Value = 500;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 20);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Height";
+            // 
+            // triangulationCheckBox
+            // 
+            this.triangulationCheckBox.AutoSize = true;
+            this.triangulationCheckBox.Location = new System.Drawing.Point(8, 26);
+            this.triangulationCheckBox.Name = "triangulationCheckBox";
+            this.triangulationCheckBox.Size = new System.Drawing.Size(118, 24);
+            this.triangulationCheckBox.TabIndex = 13;
+            this.triangulationCheckBox.Text = "Triangulation";
+            this.triangulationCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1261, 686);
-            this.Controls.Add(this.mLabel);
-            this.Controls.Add(this.k_sLabel);
-            this.Controls.Add(this.k_dLabel);
-            this.Controls.Add(this.triangulationLabel);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.mTrackBar);
-            this.Controls.Add(this.k_sTrackBar);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.k_dTrackBar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.triangulationTrackBar);
+            this.ClientSize = new System.Drawing.Size(1261, 972);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.groupBox3);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Save bitmap";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_sTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mTrackBar)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fpsTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.velocityTrackBar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -214,7 +516,6 @@ namespace Filling
 
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.TrackBar triangulationTrackBar;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar k_dTrackBar;
         private System.Windows.Forms.Label label3;
@@ -226,6 +527,31 @@ namespace Filling
         private System.Windows.Forms.Label k_sLabel;
         private System.Windows.Forms.Label mLabel;
         private System.Windows.Forms.Timer lightSourceTimer;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button backgroundFromImageButton;
+        private System.Windows.Forms.Button plainColorButton;
+        private System.Windows.Forms.CheckBox interpolationCheckBox;
+        private System.Windows.Forms.RadioButton backgroundFromImageRadioButton2;
+        private System.Windows.Forms.RadioButton plainColorRadioButton;
+        private System.Windows.Forms.Button lightColorButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton normalMapFromImageRadioButton;
+        private System.Windows.Forms.RadioButton withoutRadioButton;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label velocityLabel;
+        private System.Windows.Forms.Label fpsLabel;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TrackBar heightTrackBar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TrackBar fpsTrackBar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label heightLabel;
+        private System.Windows.Forms.TrackBar velocityTrackBar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox triangulationCheckBox;
     }
 }
 
