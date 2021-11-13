@@ -48,18 +48,19 @@ namespace Filling
             this.backgroundFromImageButton = new System.Windows.Forms.Button();
             this.plainColorButton = new System.Windows.Forms.Button();
             this.interpolationCheckBox = new System.Windows.Forms.CheckBox();
-            this.backgroundFromImageRadioButton2 = new System.Windows.Forms.RadioButton();
+            this.backgroundFromImageRadioButton = new System.Windows.Forms.RadioButton();
             this.plainColorRadioButton = new System.Windows.Forms.RadioButton();
             this.lightColorButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.normalMapImageButton = new System.Windows.Forms.Button();
             this.normalMapFromImageRadioButton = new System.Windows.Forms.RadioButton();
             this.withoutRadioButton = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.triangulationCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.velocityLabel = new System.Windows.Forms.Label();
             this.fpsLabel = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.animationCheckBox = new System.Windows.Forms.CheckBox();
             this.heightTrackBar = new System.Windows.Forms.TrackBar();
             this.label8 = new System.Windows.Forms.Label();
             this.fpsTrackBar = new System.Windows.Forms.TrackBar();
@@ -67,7 +68,6 @@ namespace Filling
             this.heightLabel = new System.Windows.Forms.Label();
             this.velocityTrackBar = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
-            this.triangulationCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).BeginInit();
@@ -203,7 +203,6 @@ namespace Filling
             // 
             this.lightSourceTimer.Enabled = true;
             this.lightSourceTimer.Interval = 1000;
-            this.lightSourceTimer.Tick += new System.EventHandler(this.lightSourceTimer_Tick);
             // 
             // label5
             // 
@@ -219,7 +218,7 @@ namespace Filling
             this.groupBox1.Controls.Add(this.backgroundFromImageButton);
             this.groupBox1.Controls.Add(this.plainColorButton);
             this.groupBox1.Controls.Add(this.interpolationCheckBox);
-            this.groupBox1.Controls.Add(this.backgroundFromImageRadioButton2);
+            this.groupBox1.Controls.Add(this.backgroundFromImageRadioButton);
             this.groupBox1.Controls.Add(this.plainColorRadioButton);
             this.groupBox1.Location = new System.Drawing.Point(924, 29);
             this.groupBox1.Name = "groupBox1";
@@ -236,6 +235,7 @@ namespace Filling
             this.backgroundFromImageButton.TabIndex = 16;
             this.backgroundFromImageButton.Text = "Select";
             this.backgroundFromImageButton.UseVisualStyleBackColor = true;
+            this.backgroundFromImageButton.Click += new System.EventHandler(this.backgroundFromImageButton_Click);
             // 
             // plainColorButton
             // 
@@ -245,6 +245,7 @@ namespace Filling
             this.plainColorButton.Size = new System.Drawing.Size(94, 29);
             this.plainColorButton.TabIndex = 15;
             this.plainColorButton.UseVisualStyleBackColor = false;
+            this.plainColorButton.Click += new System.EventHandler(this.plainColorButton_Click);
             // 
             // interpolationCheckBox
             // 
@@ -255,17 +256,19 @@ namespace Filling
             this.interpolationCheckBox.TabIndex = 2;
             this.interpolationCheckBox.Text = "Interpolation";
             this.interpolationCheckBox.UseVisualStyleBackColor = true;
+            this.interpolationCheckBox.CheckedChanged += new System.EventHandler(this.interpolationCheckBox_CheckedChanged);
             // 
-            // backgroundFromImageRadioButton2
+            // backgroundFromImageRadioButton
             // 
-            this.backgroundFromImageRadioButton2.AutoSize = true;
-            this.backgroundFromImageRadioButton2.Location = new System.Drawing.Point(6, 75);
-            this.backgroundFromImageRadioButton2.Name = "backgroundFromImageRadioButton2";
-            this.backgroundFromImageRadioButton2.Size = new System.Drawing.Size(110, 24);
-            this.backgroundFromImageRadioButton2.TabIndex = 1;
-            this.backgroundFromImageRadioButton2.TabStop = true;
-            this.backgroundFromImageRadioButton2.Text = "From image";
-            this.backgroundFromImageRadioButton2.UseVisualStyleBackColor = true;
+            this.backgroundFromImageRadioButton.AutoSize = true;
+            this.backgroundFromImageRadioButton.Location = new System.Drawing.Point(6, 75);
+            this.backgroundFromImageRadioButton.Name = "backgroundFromImageRadioButton";
+            this.backgroundFromImageRadioButton.Size = new System.Drawing.Size(110, 24);
+            this.backgroundFromImageRadioButton.TabIndex = 1;
+            this.backgroundFromImageRadioButton.TabStop = true;
+            this.backgroundFromImageRadioButton.Text = "From image";
+            this.backgroundFromImageRadioButton.UseVisualStyleBackColor = true;
+            this.backgroundFromImageRadioButton.CheckedChanged += new System.EventHandler(this.backgroundFromImageRadioButton_CheckedChanged);
             // 
             // plainColorRadioButton
             // 
@@ -277,6 +280,7 @@ namespace Filling
             this.plainColorRadioButton.TabStop = true;
             this.plainColorRadioButton.Text = "Plain color";
             this.plainColorRadioButton.UseVisualStyleBackColor = true;
+            this.plainColorRadioButton.CheckedChanged += new System.EventHandler(this.plainColorRadioButton_CheckedChanged);
             // 
             // lightColorButton
             // 
@@ -286,10 +290,11 @@ namespace Filling
             this.lightColorButton.Size = new System.Drawing.Size(94, 29);
             this.lightColorButton.TabIndex = 3;
             this.lightColorButton.UseVisualStyleBackColor = false;
+            this.lightColorButton.Click += new System.EventHandler(this.lightColorButton_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.normalMapImageButton);
             this.groupBox2.Controls.Add(this.normalMapFromImageRadioButton);
             this.groupBox2.Controls.Add(this.withoutRadioButton);
             this.groupBox2.Location = new System.Drawing.Point(924, 189);
@@ -299,14 +304,15 @@ namespace Filling
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Normal Map";
             // 
-            // button1
+            // normalMapImageButton
             // 
-            this.button1.Location = new System.Drawing.Point(145, 74);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Select";
-            this.button1.UseVisualStyleBackColor = true;
+            this.normalMapImageButton.Location = new System.Drawing.Point(145, 74);
+            this.normalMapImageButton.Name = "normalMapImageButton";
+            this.normalMapImageButton.Size = new System.Drawing.Size(94, 29);
+            this.normalMapImageButton.TabIndex = 17;
+            this.normalMapImageButton.Text = "Select";
+            this.normalMapImageButton.UseVisualStyleBackColor = true;
+            this.normalMapImageButton.Click += new System.EventHandler(this.normalMapImageButton_Click);
             // 
             // normalMapFromImageRadioButton
             // 
@@ -318,6 +324,7 @@ namespace Filling
             this.normalMapFromImageRadioButton.TabStop = true;
             this.normalMapFromImageRadioButton.Text = "From image";
             this.normalMapFromImageRadioButton.UseVisualStyleBackColor = true;
+            this.normalMapFromImageRadioButton.CheckedChanged += new System.EventHandler(this.normalMapFromImageRadioButton_CheckedChanged);
             // 
             // withoutRadioButton
             // 
@@ -329,6 +336,7 @@ namespace Filling
             this.withoutRadioButton.TabStop = true;
             this.withoutRadioButton.Text = "Without";
             this.withoutRadioButton.UseVisualStyleBackColor = true;
+            this.withoutRadioButton.CheckedChanged += new System.EventHandler(this.withoutRadioButton_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -351,11 +359,22 @@ namespace Filling
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Surface";
             // 
+            // triangulationCheckBox
+            // 
+            this.triangulationCheckBox.AutoSize = true;
+            this.triangulationCheckBox.Location = new System.Drawing.Point(8, 26);
+            this.triangulationCheckBox.Name = "triangulationCheckBox";
+            this.triangulationCheckBox.Size = new System.Drawing.Size(118, 24);
+            this.triangulationCheckBox.TabIndex = 13;
+            this.triangulationCheckBox.Text = "Triangulation";
+            this.triangulationCheckBox.UseVisualStyleBackColor = true;
+            this.triangulationCheckBox.CheckedChanged += new System.EventHandler(this.triangulationCheckBox_CheckedChanged);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.velocityLabel);
             this.groupBox4.Controls.Add(this.fpsLabel);
-            this.groupBox4.Controls.Add(this.checkBox1);
+            this.groupBox4.Controls.Add(this.animationCheckBox);
             this.groupBox4.Controls.Add(this.heightTrackBar);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.fpsTrackBar);
@@ -390,15 +409,16 @@ namespace Filling
             this.fpsLabel.TabIndex = 22;
             this.fpsLabel.Text = "a";
             // 
-            // checkBox1
+            // animationCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(8, 125);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(100, 24);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Animation";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.animationCheckBox.AutoSize = true;
+            this.animationCheckBox.Location = new System.Drawing.Point(8, 125);
+            this.animationCheckBox.Name = "animationCheckBox";
+            this.animationCheckBox.Size = new System.Drawing.Size(100, 24);
+            this.animationCheckBox.TabIndex = 17;
+            this.animationCheckBox.Text = "Animation";
+            this.animationCheckBox.UseVisualStyleBackColor = true;
+            this.animationCheckBox.CheckedChanged += new System.EventHandler(this.animationCheckBox_CheckedChanged);
             // 
             // heightTrackBar
             // 
@@ -410,6 +430,7 @@ namespace Filling
             this.heightTrackBar.TabIndex = 21;
             this.heightTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.heightTrackBar.Value = 500;
+            this.heightTrackBar.Scroll += new System.EventHandler(this.heightTrackBar_Scroll);
             // 
             // label8
             // 
@@ -424,12 +445,12 @@ namespace Filling
             // 
             this.fpsTrackBar.Location = new System.Drawing.Point(6, 180);
             this.fpsTrackBar.Maximum = 100;
-            this.fpsTrackBar.Minimum = 1;
             this.fpsTrackBar.Name = "fpsTrackBar";
             this.fpsTrackBar.Size = new System.Drawing.Size(239, 56);
             this.fpsTrackBar.TabIndex = 19;
             this.fpsTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.fpsTrackBar.Value = 10;
+            this.fpsTrackBar.Scroll += new System.EventHandler(this.fpsTrackBar_Scroll);
             // 
             // label7
             // 
@@ -452,13 +473,13 @@ namespace Filling
             // velocityTrackBar
             // 
             this.velocityTrackBar.Location = new System.Drawing.Point(8, 242);
-            this.velocityTrackBar.Maximum = 1000;
-            this.velocityTrackBar.Minimum = 300;
+            this.velocityTrackBar.Maximum = 100;
             this.velocityTrackBar.Name = "velocityTrackBar";
             this.velocityTrackBar.Size = new System.Drawing.Size(239, 56);
             this.velocityTrackBar.TabIndex = 13;
             this.velocityTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.velocityTrackBar.Value = 500;
+            this.velocityTrackBar.Value = 100;
+            this.velocityTrackBar.Scroll += new System.EventHandler(this.velocityTrackBar_Scroll);
             // 
             // label6
             // 
@@ -468,16 +489,6 @@ namespace Filling
             this.label6.Size = new System.Drawing.Size(54, 20);
             this.label6.TabIndex = 14;
             this.label6.Text = "Height";
-            // 
-            // triangulationCheckBox
-            // 
-            this.triangulationCheckBox.AutoSize = true;
-            this.triangulationCheckBox.Location = new System.Drawing.Point(8, 26);
-            this.triangulationCheckBox.Name = "triangulationCheckBox";
-            this.triangulationCheckBox.Size = new System.Drawing.Size(118, 24);
-            this.triangulationCheckBox.TabIndex = 13;
-            this.triangulationCheckBox.Text = "Triangulation";
-            this.triangulationCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -489,6 +500,7 @@ namespace Filling
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.groupBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Save bitmap";
@@ -532,18 +544,18 @@ namespace Filling
         private System.Windows.Forms.Button backgroundFromImageButton;
         private System.Windows.Forms.Button plainColorButton;
         private System.Windows.Forms.CheckBox interpolationCheckBox;
-        private System.Windows.Forms.RadioButton backgroundFromImageRadioButton2;
+        private System.Windows.Forms.RadioButton backgroundFromImageRadioButton;
         private System.Windows.Forms.RadioButton plainColorRadioButton;
         private System.Windows.Forms.Button lightColorButton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button normalMapImageButton;
         private System.Windows.Forms.RadioButton normalMapFromImageRadioButton;
         private System.Windows.Forms.RadioButton withoutRadioButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label velocityLabel;
         private System.Windows.Forms.Label fpsLabel;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox animationCheckBox;
         private System.Windows.Forms.TrackBar heightTrackBar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TrackBar fpsTrackBar;

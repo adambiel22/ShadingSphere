@@ -10,16 +10,16 @@ namespace Filling
     public class LightSource
     {
         public FPoint3D Position { get; set; }
-        public Color LightColor { get; set; }
+        public Color Color { get; set; }
 
         public LightSource(FPoint3D position, Color lightColor)
         {
             Position = position;
-            LightColor = lightColor;
+            Color = lightColor;
         }
         public LightSource(Color lightColor)
         {
-            LightColor = lightColor;
+            Color = lightColor;
         }
     }
 }

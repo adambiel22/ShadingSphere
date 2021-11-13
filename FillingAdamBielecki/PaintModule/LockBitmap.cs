@@ -10,10 +10,10 @@ using System.Diagnostics;
 
 namespace Filling
 {
-    //source: https://www.codeproject.com/Tips/240428/Work-with-Bitmaps-Faster-in-Csharp-3
-    public class LockBitmap
+    //managedBitmap: https://www.codeproject.com/Tips/240428/Work-with-Bitmaps-Faster-in-Csharp-3
+    public class LockBitmap : BitmapManager
     {
-        Bitmap source = null;
+        Bitmap managedBitmap = null;
         IntPtr Iptr = IntPtr.Zero;
         BitmapData bitmapData = null;
 
@@ -22,21 +22,21 @@ namespace Filling
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public LockBitmap(Bitmap source)
+        public LockBitmap()
         {
-            this.source = source;
         }
 
         /// <summary>
         /// Lock bitmap data
         /// </summary>
-        public void LockBits()
+        public override void StartDrawing(Bitmap bitmap)
         {
+            managedBitmap = bitmap;
             try
             {
                 // Get width and height of bitmap
-                Width = source.Width;
-                Height = source.Height;
+                Width = managedBitmap.Width;
+                Height = managedBitmap.Height;
 
                 // get total locked pixels count
                 int PixelCount = Width * Height;
@@ -44,8 +44,8 @@ namespace Filling
                 // Create rectangle to lock
                 Rectangle rect = new Rectangle(0, 0, Width, Height);
 
-                // get source bitmap pixel format size
-                Depth = System.Drawing.Bitmap.GetPixelFormatSize(source.PixelFormat);
+                // get managedBitmap bitmap pixel format size
+                Depth = System.Drawing.Bitmap.GetPixelFormatSize(managedBitmap.PixelFormat);
 
                 // Check if bpp (Bits Per Pixel) is 8, 24, or 32
                 if (Depth != 8 && Depth != 24 && Depth != 32)
@@ -54,8 +54,8 @@ namespace Filling
                 }
 
                 // Lock bitmap and return bitmap data
-                bitmapData = source.LockBits(rect, ImageLockMode.ReadWrite,
-                                             source.PixelFormat);
+                bitmapData = managedBitmap.LockBits(rect, ImageLockMode.ReadWrite,
+                                             managedBitmap.PixelFormat);
 
                 // create byte array to copy pixel values
                 int step = Depth / 8;
@@ -74,7 +74,7 @@ namespace Filling
         /// <summary>
         /// Unlock bitmap data
         /// </summary>
-        public void UnlockBits()
+        public override void EndDrawing()
         {
             try
             {
@@ -82,7 +82,7 @@ namespace Filling
                 Marshal.Copy(Pixels, 0, Iptr, Pixels.Length);
 
                 // Unlock bitmap data
-                source.UnlockBits(bitmapData);
+                managedBitmap.UnlockBits(bitmapData);
             }
             catch (Exception ex)
             {
@@ -96,7 +96,7 @@ namespace Filling
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public Color GetPixel(int x, int y)
+        public override Color GetPixel(int x, int y)
         {
             Color clr = Color.Empty;
 
@@ -139,7 +139,7 @@ namespace Filling
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="color"></param>
-        public void SetPixel(int x, int y, Color color)
+        public override void SetPixel(int x, int y, Color color)
         {
             // Get color components count
             int cCount = Depth / 8;
