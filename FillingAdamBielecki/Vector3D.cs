@@ -30,6 +30,11 @@ namespace Filling
             => new Vector3D(a * b.X, a * b.Y, a * b.Z);
         public static Vector3D operator /(Vector3D a, double b)
             => new Vector3D(a.X / b, a.Y / b, a.Z / b);
+        public static Vector3D operator *(Matrix3D matrix, Vector3D vector)
+            => new Vector3D(
+                vector.X * matrix[0, 0] + vector.Y * matrix[0, 1] + vector.Z * matrix[0, 2],
+                vector.X * matrix[1, 0] + vector.Y * matrix[1, 1] + vector.Z * matrix[1, 2],
+                vector.X * matrix[2, 0] + vector.Y * matrix[2, 1] + vector.Z * matrix[2, 2]);
         public static implicit operator FPoint3D(Vector3D a)
             => new FPoint3D(a.X, a.Y, a.Z);
 

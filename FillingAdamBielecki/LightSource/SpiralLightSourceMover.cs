@@ -9,15 +9,16 @@ namespace Filling
     class SpiralLightSourceMover : LightSourceMover
     {
         public double SpiralFactor { get; set; }
-
-        public SpiralLightSourceMover(FPoint3D startingPoint, double velocity, double spiralFactor) : base(startingPoint, velocity)
+        public SpiralLightSourceMover(FPoint3D startingPoint, double velocity, int fps, 
+            int minTime, int maxTime, LightSource lightSource, 
+            Action paintFrame, double spiralFactor) : base(startingPoint, velocity, fps, minTime, maxTime, lightSource, paintFrame)
         {
             SpiralFactor = spiralFactor;
         }
 
-        public override void Move(LightSource lightSource, int time)
+        protected override void Move()
         {
-            lightSource.Position = new FPoint3D(
+            LightSource.Position = new FPoint3D(
                 SpiralFactor * time * Velocity * Math.Cos(time * Velocity) + StartingPoint.X,
                 SpiralFactor * time * Velocity * Math.Sin(time * Velocity) + StartingPoint.Y,
                 StartingPoint.Z);

@@ -29,7 +29,6 @@ namespace Filling
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.triangulationTrackBar = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,7 +41,6 @@ namespace Filling
             this.k_dLabel = new System.Windows.Forms.Label();
             this.k_sLabel = new System.Windows.Forms.Label();
             this.mLabel = new System.Windows.Forms.Label();
-            this.lightSourceTimer = new System.Windows.Forms.Timer(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.backgroundFromImageButton = new System.Windows.Forms.Button();
@@ -90,6 +88,7 @@ namespace Filling
             this.pictureBox.Size = new System.Drawing.Size(860, 948);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
             // 
             // triangulationTrackBar
             // 
@@ -198,11 +197,6 @@ namespace Filling
             this.mLabel.Size = new System.Drawing.Size(17, 20);
             this.mLabel.TabIndex = 12;
             this.mLabel.Text = "a";
-            // 
-            // lightSourceTimer
-            // 
-            this.lightSourceTimer.Enabled = true;
-            this.lightSourceTimer.Interval = 1000;
             // 
             // label5
             // 
@@ -424,7 +418,7 @@ namespace Filling
             // 
             this.heightTrackBar.Location = new System.Drawing.Point(6, 86);
             this.heightTrackBar.Maximum = 1000;
-            this.heightTrackBar.Minimum = 300;
+            this.heightTrackBar.Minimum = 10;
             this.heightTrackBar.Name = "heightTrackBar";
             this.heightTrackBar.Size = new System.Drawing.Size(239, 56);
             this.heightTrackBar.TabIndex = 21;
@@ -538,7 +532,6 @@ namespace Filling
         private System.Windows.Forms.Label k_dLabel;
         private System.Windows.Forms.Label k_sLabel;
         private System.Windows.Forms.Label mLabel;
-        private System.Windows.Forms.Timer lightSourceTimer;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button backgroundFromImageButton;

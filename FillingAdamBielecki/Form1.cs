@@ -14,15 +14,7 @@ namespace Filling
 {
     public partial class Form1 : Form
     {
-        private AppManager appManager;
-
-        SphereTriangulation sphereTriangulation;
-        SurfaceSettings surfaceSettings;
-        LightSource lightSource;
-        SpiralLightSourceMover mover;
-        int r = 300;
-        Point midPoint;
-        int time;
+        private readonly AppManager appManager;
 
         public Form1()
         {
@@ -103,15 +95,6 @@ namespace Filling
 
             appManager.M = mTrackBar.Value;
             mLabel.Text = mTrackBar.Value.ToString();
-        }
-
-        private void lightSourceTimer_Tick(object sender, EventArgs e)
-        {
-            time = (time + 1) % 720;
-            mover.Move(lightSource, time);
-            Debug.WriteLine("Move!");
-            Debug.WriteLine(lightSource.Position);
-            //paintSphere();
         }
 
         private void plainColorRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -204,5 +187,16 @@ namespace Filling
                 appManager.NormalMap = new Bitmap(openFileDialog.FileName);
             }
         }
+
+        private void lightSourceTimer_Tick_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

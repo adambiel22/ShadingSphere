@@ -63,9 +63,39 @@ namespace Filling.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap krajka {
+        internal static System.Drawing.Bitmap Bricks {
             get {
-                object obj = ResourceManager.GetObject("krajka", resourceCulture);
+                object obj = ResourceManager.GetObject("Bricks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Radial {
+            get {
+                object obj = ResourceManager.GetObject("Radial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stone {
+            get {
+                object obj = ResourceManager.GetObject("Stone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stones {
+            get {
+                object obj = ResourceManager.GetObject("Stones", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
