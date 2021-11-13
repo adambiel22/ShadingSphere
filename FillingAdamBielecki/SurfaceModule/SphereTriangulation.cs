@@ -85,6 +85,17 @@ namespace Filling
                     triangles[i,2]
                 });
             }
+
+            //Parallel.For(0, triangles.GetLength(0),
+            //    (int i) =>
+            //    {
+            //        fillTriangle(new Point[]
+            //        {
+            //            triangles[i,0],
+            //            triangles[i,1],
+            //            triangles[i,2]
+            //        });
+            //    });
         }
 
         private FPoint3D[,] triangles;
