@@ -43,6 +43,10 @@ namespace Filling
             return (a * b) / a.Norm / b.Norm;
         }
 
+        public static Vector3D CrossProduct(Vector3D p0, Vector3D p1)
+        {
+            return new Vector3D(p0.Y * p1.Z - p0.Z * p1.Y, p0.Z * p1.X - p0.X * p1.Z, p0.X * p1.Y - p0.Y * p1.X);
+        }
 
         public override string ToString()
         {

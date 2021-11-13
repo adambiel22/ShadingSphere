@@ -12,7 +12,6 @@ namespace Filling
         public abstract void DrawLine(Point point1, Point point2, Color color);
         public abstract void FillPolygon(Point[] polygon);
         public IPixelSetter PixelSetter { get; set; }
-
         public IColorComputer ColorComputer { get; set; }
 
         public Painter(IPixelSetter pixelSetter, IColorComputer colorComputer)
