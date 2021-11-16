@@ -39,10 +39,10 @@ namespace Filling
 
             return Color.FromArgb
                 (
-                    (int)Math.Max(v0color.A * v0influence + v1color.A * v1influence + v2color.A * v2influence, 0),
-                    (int)Math.Max(v0color.R * v0influence + v1color.R * v1influence + v2color.R * v2influence, 0),
-                    (int)Math.Max(v0color.G * v0influence + v1color.G * v1influence + v2color.G * v2influence, 0),
-                    (int)Math.Max(v0color.B * v0influence + v1color.B * v1influence + v2color.B * v2influence, 0)
+                    (int)Math.Min(Math.Max(v0color.A * v0influence + v1color.A * v1influence + v2color.A * v2influence, 0), 255),
+                    (int)Math.Min(Math.Max(v0color.R * v0influence + v1color.R * v1influence + v2color.R * v2influence, 0), 255),
+                    (int)Math.Min(Math.Max(v0color.G * v0influence + v1color.G * v1influence + v2color.G * v2influence, 0), 255),
+                    (int)Math.Min(Math.Max(v0color.B * v0influence + v1color.B * v1influence + v2color.B * v2influence, 0), 255)
                 );
         }
     }

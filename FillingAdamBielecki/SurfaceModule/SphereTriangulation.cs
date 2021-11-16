@@ -98,6 +98,6 @@ namespace Filling
             //    });
         }
 
-        private FPoint3D[,] triangles;
+        protected FPoint3D[,] triangles;
     }
 }

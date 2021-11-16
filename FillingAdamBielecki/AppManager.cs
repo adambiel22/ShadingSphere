@@ -81,7 +81,8 @@ namespace Filling
             get => triangulation.N; 
             set
             {
-                triangulation = new SphereTriangulation(value, R, midPoint);
+                triangulation = 
+                    new MovableSphereTriangulation(value, R, midPoint, PictureBox, sensitiveness, Paint);
                 Paint();
             } 
         }
@@ -154,7 +155,8 @@ namespace Filling
         {
             PictureBox = pictureBox;
             midPoint = new Point(PictureBox.Width / 2, PictureBox.Height / 2);
-            triangulation = new SphereTriangulation(4, R, midPoint);
+            sensitiveness = 10;
+            triangulation = new MovableSphereTriangulation(4, R, midPoint, pictureBox, sensitiveness, Paint);
             isGrid = true;
             
             isWithoutNormalMap = true;
@@ -210,6 +212,7 @@ namespace Filling
         private bool isAnimation;
 
         private int R = 300;
+        private int sensitiveness;
         private Color gridColor = Color.Black;
         private Point midPoint;
     }

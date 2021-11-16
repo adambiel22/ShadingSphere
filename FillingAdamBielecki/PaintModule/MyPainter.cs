@@ -64,13 +64,13 @@ namespace Filling
                 {
                     for (int x = (int)AET[i].X + 1; x < AET[(i + 1)].X; x++)
                     {
-                        PixelSetter.SetPixel(x, y, ColorComputer.ComputeColor(x, y));
+                        PixelSetter.SetPixel(x, y - 1, ColorComputer.ComputeColor(x, y));
                     }
                 }
 
-                foreach (var i in AET)
+                foreach (ActiveEdge edge in AET)
                 {
-                    i.Increment();
+                    edge.Increment();
                 }
             }
         }

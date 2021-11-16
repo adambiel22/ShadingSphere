@@ -11,6 +11,7 @@ namespace Filling
     {
         private readonly ISurfaceGeometryComputer surfaceGeometryComputer1;
         private readonly ISurfaceGeometryComputer surfaceGeometryComputer2;
+        public int D { get; set; }
 
         public CombineNormalGeometry(ISurfaceGeometryComputer surfaceGeometry1, ISurfaceGeometryComputer surfaceGeometry2)
         {

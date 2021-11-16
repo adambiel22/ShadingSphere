@@ -66,6 +66,11 @@ namespace Filling
             this.heightLabel = new System.Windows.Forms.Label();
             this.velocityTrackBar = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
+            this.kTrackBar = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.kLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).BeginInit();
@@ -78,6 +83,7 @@ namespace Filling
             ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fpsTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.velocityTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -288,19 +294,22 @@ namespace Filling
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.kLabel);
+            this.groupBox2.Controls.Add(this.kTrackBar);
             this.groupBox2.Controls.Add(this.normalMapImageButton);
             this.groupBox2.Controls.Add(this.normalMapFromImageRadioButton);
             this.groupBox2.Controls.Add(this.withoutRadioButton);
             this.groupBox2.Location = new System.Drawing.Point(924, 189);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(283, 125);
+            this.groupBox2.Size = new System.Drawing.Size(283, 151);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Normal Map";
             // 
             // normalMapImageButton
             // 
-            this.normalMapImageButton.Location = new System.Drawing.Point(145, 74);
+            this.normalMapImageButton.Location = new System.Drawing.Point(145, 71);
             this.normalMapImageButton.Name = "normalMapImageButton";
             this.normalMapImageButton.Size = new System.Drawing.Size(94, 29);
             this.normalMapImageButton.TabIndex = 17;
@@ -334,6 +343,8 @@ namespace Filling
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.triangulationCheckBox);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.mTrackBar);
@@ -346,7 +357,7 @@ namespace Filling
             this.groupBox3.Controls.Add(this.triangulationTrackBar);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.k_dTrackBar);
-            this.groupBox3.Location = new System.Drawing.Point(924, 320);
+            this.groupBox3.Location = new System.Drawing.Point(924, 346);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(283, 299);
             this.groupBox3.TabIndex = 16;
@@ -378,7 +389,7 @@ namespace Filling
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.lightColorButton);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Location = new System.Drawing.Point(924, 625);
+            this.groupBox4.Location = new System.Drawing.Point(924, 651);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(283, 309);
             this.groupBox4.TabIndex = 17;
@@ -484,6 +495,54 @@ namespace Filling
             this.label6.TabIndex = 14;
             this.label6.Text = "Height";
             // 
+            // kTrackBar
+            // 
+            this.kTrackBar.LargeChange = 0;
+            this.kTrackBar.Location = new System.Drawing.Point(6, 106);
+            this.kTrackBar.Maximum = 100;
+            this.kTrackBar.Minimum = 1;
+            this.kTrackBar.Name = "kTrackBar";
+            this.kTrackBar.Size = new System.Drawing.Size(239, 56);
+            this.kTrackBar.TabIndex = 14;
+            this.kTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.kTrackBar.Value = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(128, 139);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 20);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Kd";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(136, 147);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(27, 20);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Kd";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(133, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(17, 20);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "a";
+            // 
+            // kLabel
+            // 
+            this.kLabel.AutoSize = true;
+            this.kLabel.Location = new System.Drawing.Point(251, 106);
+            this.kLabel.Name = "kLabel";
+            this.kLabel.Size = new System.Drawing.Size(17, 20);
+            this.kLabel.TabIndex = 14;
+            this.kLabel.Text = "a";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -514,6 +573,7 @@ namespace Filling
             ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fpsTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.velocityTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -557,6 +617,12 @@ namespace Filling
         private System.Windows.Forms.TrackBar velocityTrackBar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox triangulationCheckBox;
+        private System.Windows.Forms.Label kLabel;
+        private System.Windows.Forms.TrackBar kTrackBar;
+        private System.Windows.Forms.Label Label;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label1;
     }
 }
 

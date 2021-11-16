@@ -33,8 +33,7 @@ namespace Filling
         {
             return new Vector3D(x, y,
                 Math.Sqrt(-(x - MidPoint.X) * (x - MidPoint.X) -
-                    (y - MidPoint.Y) * (y - MidPoint.Y) +
-                    R * R));
+                    (y - MidPoint.Y) * (y - MidPoint.Y) + R * R));
         }
     }
 }
