@@ -62,7 +62,7 @@ namespace Filling
                 AET.Sort();
                 for (int i = 0; i < AET.Count; i += 2)
                 {
-                    for (int x = (int)AET[i].X + 1; x < AET[(i + 1)].X; x++)
+                    for (int x = (int)AET[i].X + 1; x <= AET[(i + 1)].X; x++)
                     {
                         PixelSetter.SetPixel(x, y - 1, ColorComputer.ComputeColor(x, y));
                     }

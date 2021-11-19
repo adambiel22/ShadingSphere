@@ -17,6 +17,20 @@ namespace Filling
             }
             this.matrix = matrix;
         }
+        public Matrix3D(Vector3D v0, Vector3D v1, Vector3D v2)
+        {
+            matrix = new double[3, 3];
+            matrix[0, 0] = v0.X;
+            matrix[1, 0] = v0.Y;
+            matrix[2, 0] = v0.Z;
+            matrix[0, 1] = v1.X;
+            matrix[1, 1] = v1.Y;
+            matrix[2, 1] = v1.Z;
+            matrix[0, 2] = v2.X;
+            matrix[1, 2] = v2.Y;
+            matrix[2, 2] = v2.Z;
+
+        }
         public double this[int index1, int index2] => matrix[index1,index2];
 
         public override string ToString()

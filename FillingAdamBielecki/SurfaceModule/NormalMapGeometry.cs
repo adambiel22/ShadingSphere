@@ -11,12 +11,10 @@ namespace Filling
 {
     public class NormalMapGeometry : ISurfaceGeometryComputer
     {
-        public Bitmap NormalMap { get; set; }
-
-
         public NormalMapGeometry(Bitmap normalMap)
         {
-            NormalMap = normalMap;
+            bitmapManager = new LockBitmap();
+            bitmapManager.StartDrawing(normalMap);
         }
         
         public Vector3D ComputeNormalVector(int x, int y)
@@ -30,7 +28,7 @@ namespace Filling
             //Color pixelColor = Color.FromArgb(_lock.Scan0.ToInt32());
 
             //NormalMap.UnlockBits(_lock);
-            Color pixelColor = NormalMap.GetPixel(x % NormalMap.Width, y % NormalMap.Height);
+            Color pixelColor = bitmapManager.GetPixel(x % bitmapManager.Width, y % bitmapManager.Height);
 
             Vector3D normalVector = new Vector3D(
                 (pixelColor.R - 127.5) / 127.5,
@@ -43,5 +41,12 @@ namespace Filling
         {
             return new Vector3D(x, y, 0);
         }
+
+        public void SetNormalMap(Bitmap normalMap)
+        {
+            bitmapManager.StartDrawing(normalMap);
+        }
+
+        private BitmapManager bitmapManager;
     }
 }

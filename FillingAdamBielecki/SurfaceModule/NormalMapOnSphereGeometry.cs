@@ -20,10 +20,6 @@ namespace Filling
 
         public Vector3D ComputeNormalVector(int x, int y)
         {
-            if ( x == 433 && y == 476)
-            {
-                Debug.WriteLine((x, y));
-            }
             Vector3D sphereVector = halfSphereGeometry.ComputeNormalVector(x, y);
             Vector3D normalMapVector = normalMapGeometry.ComputeNormalVector(x, y);
             Vector3D AxisVector = new Vector3D(-sphereVector.Y, sphereVector.X, 0);

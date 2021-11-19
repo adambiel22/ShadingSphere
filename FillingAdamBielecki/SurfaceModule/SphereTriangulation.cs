@@ -76,26 +76,26 @@ namespace Filling
 
         public void FillTriangulation(Action<Point[]> fillTriangle)
         {
-            for (int i = 0; i < triangles.GetLength(0); i++)
-            {
-                fillTriangle(new Point[]
-                {
-                    triangles[i,0],
-                    triangles[i,1],
-                    triangles[i,2]
-                });
-            }
-
-            //Parallel.For(0, triangles.GetLength(0),
-            //    (int i) =>
+            //for (int i = 0; i < triangles.GetLength(0); i++)
+            //{
+            //    fillTriangle(new Point[]
             //    {
-            //        fillTriangle(new Point[]
-            //        {
-            //            triangles[i,0],
-            //            triangles[i,1],
-            //            triangles[i,2]
-            //        });
+            //        triangles[i,0],
+            //        triangles[i,1],
+            //        triangles[i,2]
             //    });
+            //}
+
+            Parallel.For(0, triangles.GetLength(0),
+                (int i) =>
+                {
+                    fillTriangle(new Point[]
+                    {
+                        triangles[i,0],
+                        triangles[i,1],
+                        triangles[i,2]
+                    });
+                });
         }
 
         protected FPoint3D[,] triangles;

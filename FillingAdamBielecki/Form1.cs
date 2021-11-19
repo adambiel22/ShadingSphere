@@ -29,13 +29,15 @@ namespace Filling
 
             withoutRadioButton.Checked = appManager.IsWithoutNormalMap;
             normalMapFromImageRadioButton.Checked = !appManager.IsWithoutNormalMap;
+            kTrackBar.Value = (int)(appManager.K * kTrackBar.Maximum);
+            kLabel.Text = appManager.K.ToString();
 
             triangulationCheckBox.Checked = appManager.IsGrid;
             triangulationTrackBar.Value = appManager.TriangulationLevel;
             triangulationLabel.Text = appManager.TriangulationLevel.ToString();
-            k_dTrackBar.Value = (int)(appManager.Kd * 100);
+            k_dTrackBar.Value = (int)(appManager.Kd * k_dTrackBar.Maximum);
             k_dLabel.Text = appManager.Kd.ToString();
-            k_sTrackBar.Value = (int)(appManager.Ks * 100);
+            k_sTrackBar.Value = (int)(appManager.Ks * k_sTrackBar.Maximum);
             k_sLabel.Text = appManager.Ks.ToString();
             mTrackBar.Value = appManager.M;
             mLabel.Text = appManager.M.ToString();
@@ -52,47 +54,26 @@ namespace Filling
             appManager.Paint();
         }
 
-        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            Debug.WriteLine(e.Location);
-        }
-
         private void k_dTrackBar_Scroll(object sender, EventArgs e)
         {
-            //surfaceSettings.K_d = (double)k_dTrackBar.Value / k_dTrackBar.Maximum;
-            //k_dLabel.Text = ((double)k_dTrackBar.Value / k_dTrackBar.Maximum).ToString();
-            //paintSphere();
-
             appManager.Kd = (double)k_dTrackBar.Value / k_dTrackBar.Maximum;
             k_dLabel.Text = ((double)k_dTrackBar.Value / k_dTrackBar.Maximum).ToString();
         }
 
         private void triangulationTrackBar_Scroll(object sender, EventArgs e)
         {
-            //sphereTriangulation = new SphereTriangulation(triangulationTrackBar.Value, r, midPoint);
-            //triangulationLabel.Text = triangulationTrackBar.Value.ToString();
-            //paintSphere();
-
             appManager.TriangulationLevel = triangulationTrackBar.Value;
             triangulationLabel.Text = triangulationTrackBar.Value.ToString();
         }
 
         private void k_sTrackBar_Scroll(object sender, EventArgs e)
         {
-            //surfaceSettings.K_s = (double)k_sTrackBar.Value / k_sTrackBar.Maximum;
-            //k_sLabel.Text = ((double)k_sTrackBar.Value / k_sTrackBar.Maximum).ToString();
-            //paintSphere();
-
             appManager.Ks = (double)k_sTrackBar.Value / k_sTrackBar.Maximum;
             k_sLabel.Text = ((double)k_sTrackBar.Value / k_sTrackBar.Maximum).ToString();
         }
 
         private void mTrackBar_Scroll(object sender, EventArgs e)
         {
-            //surfaceSettings.M = mTrackBar.Value;
-            //mLabel.Text = mTrackBar.Value.ToString();
-            //paintSphere();
-
             appManager.M = mTrackBar.Value;
             mLabel.Text = mTrackBar.Value.ToString();
         }
@@ -141,6 +122,12 @@ namespace Filling
             if (normalMapFromImageRadioButton.Checked) appManager.IsWithoutNormalMap = false;
         }
 
+        private void kTrackBar_Scroll(object sender, EventArgs e)
+        {
+            appManager.K = (double)kTrackBar.Value / kTrackBar.Maximum;
+            kLabel.Text = appManager.K.ToString();
+        }
+
         private void triangulationCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             appManager.IsGrid = triangulationCheckBox.Checked;
@@ -187,16 +174,5 @@ namespace Filling
                 appManager.NormalMap = new Bitmap(openFileDialog.FileName);
             }
         }
-
-        private void lightSourceTimer_Tick_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

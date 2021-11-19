@@ -61,17 +61,27 @@ namespace Filling
                 }
                 else
                 {
-                    surfaceSettings.SurfaceGeometryComputer = combineSurfaceGeometryComputer;
+                    surfaceSettings.SurfaceGeometryComputer = professorNormalMapOnSphereGeometry;
                     Paint();
                 }
             }
         }
         public Bitmap NormalMap
         {
-            get => normalMapGeometry.NormalMap;
+            get => null; 
             set
             {
-                normalMapGeometry.NormalMap = value;
+                normalMapGeometry.SetNormalMap(value);
+                Paint();
+            }
+        }
+
+        public double K
+        {
+            get => professorNormalMapOnSphereGeometry.K;
+            set
+            {
+                professorNormalMapOnSphereGeometry.K = value;
                 Paint();
             }
         }
@@ -162,10 +172,13 @@ namespace Filling
             isWithoutNormalMap = true;
             withoutSurfaceGeometryComputer = new HalfSphereGeometry(R, midPoint);
             normalMapGeometry = new NormalMapGeometry(Properties.Resources.Bricks);
-            combineSurfaceGeometryComputer = new CombineNormalGeometry(withoutSurfaceGeometryComputer, normalMapGeometry);
+            //combineSurfaceGeometryComputer = new CombineNormalGeometry(withoutSurfaceGeometryComputer, normalMapGeometry);
+            professorNormalMapOnSphereGeometry = new ProfessorNormalMapOnSphereGeometry(
+                    withoutSurfaceGeometryComputer, normalMapGeometry, 0.5);
             ISurfaceGeometryComputer surfaceGeometryComputer = withoutSurfaceGeometryComputer;
             
-            surfaceSettings = new SurfaceSettings(0.5, 0.8, Color.Red, Properties.Resources.landscape, true, 40, surfaceGeometryComputer);
+            surfaceSettings = new SurfaceSettings(0.5, 0.8, Color.Red,
+                Properties.Resources.landscape, true, 40, surfaceGeometryComputer);
             FPoint3D lightStartPosition = new FPoint3D(midPoint.X, midPoint.Y, 500);
             lightSource = new LightSource(lightStartPosition, Color.White);
             colorComputer = new ReflexColorComputer(surfaceSettings, lightSource);
@@ -204,8 +217,9 @@ namespace Filling
         private IColorComputer colorComputer;
         private SurfaceSettings surfaceSettings;
         private LightSource lightSource;
-        private ISurfaceGeometryComputer withoutSurfaceGeometryComputer;
+        private HalfSphereGeometry withoutSurfaceGeometryComputer;
         private CombineNormalGeometry combineSurfaceGeometryComputer;
+        private ProfessorNormalMapOnSphereGeometry professorNormalMapOnSphereGeometry;
         private bool isWithoutNormalMap;
         private NormalMapGeometry normalMapGeometry;
         private LightSourceMover lightSourceMover;

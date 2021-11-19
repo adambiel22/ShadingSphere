@@ -13,5 +13,7 @@ namespace Filling
         public abstract Color GetPixel(int x, int y);
         public abstract void StartDrawing(Bitmap managedBitmap);
         public abstract void EndDrawing();
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 }
