@@ -190,8 +190,8 @@ namespace Filling
             isInterpolation = false;
             activePainter = casualPainter;
 
-            lightSourceMover = new SpiralLightSourceMover(lightStartPosition, 360, 1,
-                lightSource, Paint, 720, 360*10, 1.2);
+            lightSourceMover = new SpiralLightSourceMover(lightStartPosition, 10 * Math.PI / 180, 30,
+                100, 720, lightSource, Paint, 20);
         }
 
         public void Paint()

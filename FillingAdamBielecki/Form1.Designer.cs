@@ -59,6 +59,7 @@ namespace Filling
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.triangulationCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.realFPSLabel = new System.Windows.Forms.Label();
             this.velocityLabel = new System.Windows.Forms.Label();
             this.fpsLabel = new System.Windows.Forms.Label();
             this.animationCheckBox = new System.Windows.Forms.CheckBox();
@@ -69,7 +70,6 @@ namespace Filling
             this.heightLabel = new System.Windows.Forms.Label();
             this.velocityTrackBar = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
-            this.realFPSLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).BeginInit();
@@ -424,6 +424,15 @@ namespace Filling
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Light Source";
             // 
+            // realFPSLabel
+            // 
+            this.realFPSLabel.AutoSize = true;
+            this.realFPSLabel.Location = new System.Drawing.Point(58, 157);
+            this.realFPSLabel.Name = "realFPSLabel";
+            this.realFPSLabel.Size = new System.Drawing.Size(17, 20);
+            this.realFPSLabel.TabIndex = 24;
+            this.realFPSLabel.Text = "0";
+            // 
             // velocityLabel
             // 
             this.velocityLabel.AutoSize = true;
@@ -478,6 +487,7 @@ namespace Filling
             // 
             this.fpsTrackBar.Location = new System.Drawing.Point(6, 180);
             this.fpsTrackBar.Maximum = 100;
+            this.fpsTrackBar.Minimum = 1;
             this.fpsTrackBar.Name = "fpsTrackBar";
             this.fpsTrackBar.Size = new System.Drawing.Size(239, 56);
             this.fpsTrackBar.TabIndex = 19;
@@ -522,15 +532,6 @@ namespace Filling
             this.label6.Size = new System.Drawing.Size(54, 20);
             this.label6.TabIndex = 14;
             this.label6.Text = "Height";
-            // 
-            // realFPSLabel
-            // 
-            this.realFPSLabel.AutoSize = true;
-            this.realFPSLabel.Location = new System.Drawing.Point(58, 157);
-            this.realFPSLabel.Name = "realFPSLabel";
-            this.realFPSLabel.Size = new System.Drawing.Size(17, 20);
-            this.realFPSLabel.TabIndex = 24;
-            this.realFPSLabel.Text = "0";
             // 
             // Form1
             // 
