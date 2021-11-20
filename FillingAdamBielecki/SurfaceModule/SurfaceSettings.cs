@@ -12,10 +12,13 @@ namespace Filling
         public double K_d { get; set; }
         public double K_s { get; set; }
         public Color SurfaceColor { get; set; }
-        public Bitmap SurfaceBitmap { get; set; }
         public bool IsPlain { get; set; }
         public int M { get; set; }
         public ISurfaceGeometryComputer SurfaceGeometryComputer { get; set; }
+        public void SetSurfaceBitmap(Bitmap surfaceBitmap)
+        {
+            bitmapManager.StartDrawing(surfaceBitmap);
+        }
 
         public SurfaceSettings(double k_d, double k_s, Color surfaceColor,
             Bitmap surfaceBitmap, bool isPlain, int m, 
@@ -24,15 +27,18 @@ namespace Filling
             K_d = k_d;
             K_s = k_s;
             SurfaceColor = surfaceColor;
-            SurfaceBitmap = surfaceBitmap;
             IsPlain = isPlain;
             M = m;
             SurfaceGeometryComputer = surfaceGeometryComputer;
+            bitmapManager = new LockBitmap();
+            bitmapManager.StartDrawing(surfaceBitmap);
         }
 
         public Color GetPixelColor(int x, int y)
         {
-            return IsPlain ? SurfaceColor : SurfaceBitmap.GetPixel(x, y);
+            return IsPlain ? SurfaceColor : bitmapManager.GetPixel(x, y);
         }
+
+        BitmapManager bitmapManager;
     }
 }

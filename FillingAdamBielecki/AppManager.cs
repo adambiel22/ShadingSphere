@@ -23,8 +23,8 @@ namespace Filling
         }
         public Bitmap ObjectBackgroundImage
         { 
-            get => surfaceSettings.SurfaceBitmap;
-            set { surfaceSettings.SurfaceBitmap = value; Paint(); } 
+            get => null;
+            set { surfaceSettings.SetSurfaceBitmap(value); Paint(); } 
         }
         public bool IsObjectPlain
         { 
@@ -161,8 +161,9 @@ namespace Filling
         }
         public double Velocity { get => lightSourceMover.Velocity; set { lightSourceMover.Velocity = value; } }
 
-        public AppManager(PictureBox pictureBox)
+        public AppManager(PictureBox pictureBox, Action<long> setFPSCounter)
         {
+            this.setFPSCounter = setFPSCounter;
             PictureBox = pictureBox;
             midPoint = new Point(PictureBox.Width / 2, PictureBox.Height / 2);
             sensitiveness = 10;
@@ -189,12 +190,14 @@ namespace Filling
             isInterpolation = false;
             activePainter = casualPainter;
 
-            lightSourceMover = new SpiralLightSourceMover(lightStartPosition, 10 * Math.PI / 180, 50,
-                50, 720, lightSource, Paint, 10);
+            lightSourceMover = new SpiralLightSourceMover(lightStartPosition, 360, 1,
+                lightSource, Paint, 720, 360*10, 1.2);
         }
 
         public void Paint()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             Bitmap triangulationVisualization = new Bitmap(PictureBox.Width, PictureBox.Height, PixelFormat.Format32bppArgb);
             bitmapManager.StartDrawing(triangulationVisualization);
             triangulation.FillTriangulation(activePainter.FillPolygon);
@@ -205,6 +208,8 @@ namespace Filling
             }
             bitmapManager.EndDrawing();
             PictureBox.Image = triangulationVisualization;
+            stopwatch.Stop();
+            setFPSCounter(stopwatch.ElapsedMilliseconds);
         }
 
         private SphereTriangulation triangulation;
@@ -224,6 +229,7 @@ namespace Filling
         private NormalMapGeometry normalMapGeometry;
         private LightSourceMover lightSourceMover;
         private bool isAnimation;
+        private Action<long> setFPSCounter; 
 
         private int R = 300;
         private int sensitiveness;

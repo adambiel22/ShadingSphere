@@ -20,7 +20,7 @@ namespace Filling
         {
             InitializeComponent();
 
-            appManager = new AppManager(pictureBox);
+            appManager = new AppManager(pictureBox, setFPSCounter);
 
             plainColorRadioButton.Checked = appManager.IsObjectPlain;
             backgroundFromImageRadioButton.Checked = !appManager.IsObjectPlain;
@@ -52,6 +52,11 @@ namespace Filling
             velocityLabel.Text = ((int)appManager.Velocity).ToString();
 
             appManager.Paint();
+        }
+
+        private void setFPSCounter(long miliseconds)
+        {
+            realFPSLabel.Text = miliseconds.ToString();
         }
 
         private void k_dTrackBar_Scroll(object sender, EventArgs e)
@@ -173,6 +178,10 @@ namespace Filling
             {
                 appManager.NormalMap = new Bitmap(openFileDialog.FileName);
             }
+        }
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Debug.WriteLine(e.Location);
         }
     }
 }

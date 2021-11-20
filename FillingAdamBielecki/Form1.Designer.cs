@@ -69,6 +69,7 @@ namespace Filling
             this.heightLabel = new System.Windows.Forms.Label();
             this.velocityTrackBar = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
+            this.realFPSLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).BeginInit();
@@ -92,6 +93,7 @@ namespace Filling
             this.pictureBox.Size = new System.Drawing.Size(860, 948);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             // 
             // triangulationTrackBar
             // 
@@ -402,6 +404,7 @@ namespace Filling
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.realFPSLabel);
             this.groupBox4.Controls.Add(this.velocityLabel);
             this.groupBox4.Controls.Add(this.fpsLabel);
             this.groupBox4.Controls.Add(this.animationCheckBox);
@@ -503,7 +506,7 @@ namespace Filling
             // velocityTrackBar
             // 
             this.velocityTrackBar.Location = new System.Drawing.Point(8, 242);
-            this.velocityTrackBar.Maximum = 100;
+            this.velocityTrackBar.Maximum = 360;
             this.velocityTrackBar.Name = "velocityTrackBar";
             this.velocityTrackBar.Size = new System.Drawing.Size(239, 56);
             this.velocityTrackBar.TabIndex = 13;
@@ -519,6 +522,15 @@ namespace Filling
             this.label6.Size = new System.Drawing.Size(54, 20);
             this.label6.TabIndex = 14;
             this.label6.Text = "Height";
+            // 
+            // realFPSLabel
+            // 
+            this.realFPSLabel.AutoSize = true;
+            this.realFPSLabel.Location = new System.Drawing.Point(58, 157);
+            this.realFPSLabel.Name = "realFPSLabel";
+            this.realFPSLabel.Size = new System.Drawing.Size(17, 20);
+            this.realFPSLabel.TabIndex = 24;
+            this.realFPSLabel.Text = "0";
             // 
             // Form1
             // 
@@ -598,6 +610,7 @@ namespace Filling
         private System.Windows.Forms.TrackBar kTrackBar;
         private System.Windows.Forms.Label Label;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label realFPSLabel;
     }
 }
 

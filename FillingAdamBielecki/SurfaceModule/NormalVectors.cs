@@ -45,15 +45,15 @@ namespace Filling
             Vector3D R = 2 * (normalVector * L) * normalVector - L;
             Vector3D V = new Vector3D(0, 0, 1);
             byte Red = (byte)Math.Min(kd * lightColor.R * pixelColor.R * Math.Max(normalVector * L, 0) / 255 +
-                ks * lightColor.R * pixelColor.R * Math.Pow(Math.Max(Vector3D.cos(R, V), 0), m) / 255, 255);
+                ks * lightColor.R * pixelColor.R * Math.Pow(Math.Max(Vector3D.Cos(R, V), 0), m) / 255, 255);
 
           
 
             byte Green = (byte)(kd * lightColor.G * pixelColor.G * Math.Max(normalVector * L, 0) / 255 +
-                ks * lightColor.G * pixelColor.G * Math.Pow(Math.Max(Vector3D.cos(R, V), 0), m) / 255);
+                ks * lightColor.G * pixelColor.G * Math.Pow(Math.Max(Vector3D.Cos(R, V), 0), m) / 255);
 
             byte Blue = (byte)(kd * lightColor.B * pixelColor.B * Math.Max(normalVector * L, 0) / 255 +
-                ks * lightColor.B * pixelColor.B * Math.Pow(Math.Max(Vector3D.cos(R, V), 0), m) / 255);
+                ks * lightColor.B * pixelColor.B * Math.Pow(Math.Max(Vector3D.Cos(R, V), 0), m) / 255);
 
             return Color.FromArgb(pixelColor.A, Red, Green, Blue);
         }

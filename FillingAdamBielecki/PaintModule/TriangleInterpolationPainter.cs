@@ -12,8 +12,6 @@ namespace Filling
         public TriangleInterpolationPainter(IPixelSetter pixelSetter, IColorComputer colorComputer) 
             : base(pixelSetter, colorComputer)
         {
-            triangleInterpolationColorComputer = new TriangleInterpolationColorComputer(colorComputer);
-            base.ColorComputer = triangleInterpolationColorComputer;
         }
 
         public override void FillPolygon(Point[] polygon)
@@ -22,10 +20,11 @@ namespace Filling
             {
                 throw new ArgumentException("Filled polygon should be a triangle");
             }
-            triangleInterpolationColorComputer.Triangle = polygon;
-            base.FillPolygon(polygon);
+            TriangleInterpolationColorComputer triangleColorComputer =
+                new TriangleInterpolationColorComputer(ColorComputer);
+            triangleColorComputer.Triangle = polygon;
+            MyPainter painter = new MyPainter(PixelSetter, triangleColorComputer);
+            painter.FillPolygon(polygon);
         }
-
-        private TriangleInterpolationColorComputer triangleInterpolationColorComputer;
     }
 }

@@ -38,7 +38,7 @@ namespace Filling
         public static implicit operator FPoint3D(Vector3D a)
             => new FPoint3D(a.X, a.Y, a.Z);
 
-        public static double cos(Vector3D a, Vector3D b)
+        public static double Cos(Vector3D a, Vector3D b)
         {
             return (a * b) / a.Norm / b.Norm;
         }
