@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Drawing.Imaging;
 
 namespace Filling
 {
@@ -20,7 +13,7 @@ namespace Filling
         {
             InitializeComponent();
 
-            appManager = new AppManager(pictureBox, setFPSCounter);
+            appManager = new AppManager(pictureBox);
 
             plainColorRadioButton.Checked = appManager.IsObjectPlain;
             backgroundFromImageRadioButton.Checked = !appManager.IsObjectPlain;
@@ -46,17 +39,8 @@ namespace Filling
             heightTrackBar.Value = appManager.Height;
             heightLabel.Text = appManager.Height.ToString();
             animationCheckBox.Checked = appManager.IsAnimation;
-            fpsTrackBar.Value = appManager.FPS;
-            fpsLabel.Text = appManager.FPS.ToString();
-            velocityTrackBar.Value = (int)appManager.Velocity;
-            velocityLabel.Text = ((int)appManager.Velocity).ToString();
 
             appManager.Paint();
-        }
-
-        private void setFPSCounter(long miliseconds)
-        {
-            realFPSLabel.Text = miliseconds.ToString();
         }
 
         private void k_dTrackBar_Scroll(object sender, EventArgs e)
@@ -108,7 +92,7 @@ namespace Filling
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                appManager.ObjectBackgroundImage = new Bitmap(openFileDialog.FileName);
+                appManager.SetObjectBackgroundImage(new Bitmap(openFileDialog.FileName));
             }
         }
 
@@ -159,24 +143,12 @@ namespace Filling
             appManager.IsAnimation = animationCheckBox.Checked;
         }
 
-        private void fpsTrackBar_Scroll(object sender, EventArgs e)
-        {
-            appManager.FPS = fpsTrackBar.Value;
-            fpsLabel.Text = fpsTrackBar.Value.ToString();
-        }
-
-        private void velocityTrackBar_Scroll(object sender, EventArgs e)
-        {
-            appManager.Velocity = velocityTrackBar.Value;
-            velocityLabel.Text = velocityTrackBar.Value.ToString();
-        }
-
         private void normalMapImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                appManager.NormalMap = new Bitmap(openFileDialog.FileName);
+                appManager.SetNormalMap(new Bitmap(openFileDialog.FileName));
             }
         }
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)

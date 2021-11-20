@@ -59,16 +59,9 @@ namespace Filling
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.triangulationCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.realFPSLabel = new System.Windows.Forms.Label();
-            this.velocityLabel = new System.Windows.Forms.Label();
-            this.fpsLabel = new System.Windows.Forms.Label();
             this.animationCheckBox = new System.Windows.Forms.CheckBox();
             this.heightTrackBar = new System.Windows.Forms.TrackBar();
-            this.label8 = new System.Windows.Forms.Label();
-            this.fpsTrackBar = new System.Windows.Forms.TrackBar();
-            this.label7 = new System.Windows.Forms.Label();
             this.heightLabel = new System.Windows.Forms.Label();
-            this.velocityTrackBar = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
@@ -81,8 +74,6 @@ namespace Filling
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fpsTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.velocityTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -404,52 +395,18 @@ namespace Filling
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.realFPSLabel);
-            this.groupBox4.Controls.Add(this.velocityLabel);
-            this.groupBox4.Controls.Add(this.fpsLabel);
             this.groupBox4.Controls.Add(this.animationCheckBox);
             this.groupBox4.Controls.Add(this.heightTrackBar);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.fpsTrackBar);
-            this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.heightLabel);
-            this.groupBox4.Controls.Add(this.velocityTrackBar);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.lightColorButton);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Location = new System.Drawing.Point(924, 651);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(283, 309);
+            this.groupBox4.Size = new System.Drawing.Size(283, 161);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Light Source";
-            // 
-            // realFPSLabel
-            // 
-            this.realFPSLabel.AutoSize = true;
-            this.realFPSLabel.Location = new System.Drawing.Point(58, 157);
-            this.realFPSLabel.Name = "realFPSLabel";
-            this.realFPSLabel.Size = new System.Drawing.Size(17, 20);
-            this.realFPSLabel.TabIndex = 24;
-            this.realFPSLabel.Text = "0";
-            // 
-            // velocityLabel
-            // 
-            this.velocityLabel.AutoSize = true;
-            this.velocityLabel.Location = new System.Drawing.Point(245, 242);
-            this.velocityLabel.Name = "velocityLabel";
-            this.velocityLabel.Size = new System.Drawing.Size(17, 20);
-            this.velocityLabel.TabIndex = 23;
-            this.velocityLabel.Text = "a";
-            // 
-            // fpsLabel
-            // 
-            this.fpsLabel.AutoSize = true;
-            this.fpsLabel.Location = new System.Drawing.Point(244, 180);
-            this.fpsLabel.Name = "fpsLabel";
-            this.fpsLabel.Size = new System.Drawing.Size(17, 20);
-            this.fpsLabel.TabIndex = 22;
-            this.fpsLabel.Text = "a";
             // 
             // animationCheckBox
             // 
@@ -474,36 +431,6 @@ namespace Filling
             this.heightTrackBar.Value = 500;
             this.heightTrackBar.Scroll += new System.EventHandler(this.heightTrackBar_Scroll);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 216);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 20);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Velocity";
-            // 
-            // fpsTrackBar
-            // 
-            this.fpsTrackBar.Location = new System.Drawing.Point(6, 180);
-            this.fpsTrackBar.Maximum = 100;
-            this.fpsTrackBar.Minimum = 1;
-            this.fpsTrackBar.Name = "fpsTrackBar";
-            this.fpsTrackBar.Size = new System.Drawing.Size(239, 56);
-            this.fpsTrackBar.TabIndex = 19;
-            this.fpsTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.fpsTrackBar.Value = 10;
-            this.fpsTrackBar.Scroll += new System.EventHandler(this.fpsTrackBar_Scroll);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 157);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 20);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "FPS";
-            // 
             // heightLabel
             // 
             this.heightLabel.AutoSize = true;
@@ -512,17 +439,6 @@ namespace Filling
             this.heightLabel.Size = new System.Drawing.Size(17, 20);
             this.heightLabel.TabIndex = 13;
             this.heightLabel.Text = "a";
-            // 
-            // velocityTrackBar
-            // 
-            this.velocityTrackBar.Location = new System.Drawing.Point(8, 242);
-            this.velocityTrackBar.Maximum = 360;
-            this.velocityTrackBar.Name = "velocityTrackBar";
-            this.velocityTrackBar.Size = new System.Drawing.Size(239, 56);
-            this.velocityTrackBar.TabIndex = 13;
-            this.velocityTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.velocityTrackBar.Value = 100;
-            this.velocityTrackBar.Scroll += new System.EventHandler(this.velocityTrackBar_Scroll);
             // 
             // label6
             // 
@@ -562,8 +478,6 @@ namespace Filling
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fpsTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.velocityTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -596,22 +510,14 @@ namespace Filling
         private System.Windows.Forms.RadioButton withoutRadioButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label velocityLabel;
-        private System.Windows.Forms.Label fpsLabel;
         private System.Windows.Forms.CheckBox animationCheckBox;
         private System.Windows.Forms.TrackBar heightTrackBar;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TrackBar fpsTrackBar;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label heightLabel;
-        private System.Windows.Forms.TrackBar velocityTrackBar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox triangulationCheckBox;
         private System.Windows.Forms.Label kLabel;
         private System.Windows.Forms.TrackBar kTrackBar;
-        private System.Windows.Forms.Label Label;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label realFPSLabel;
     }
 }
 

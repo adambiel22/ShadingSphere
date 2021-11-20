@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 using System.Drawing.Imaging;
 
 
@@ -21,11 +14,12 @@ namespace Filling
             get => surfaceSettings.SurfaceColor;
             set { surfaceSettings.SurfaceColor = value; Paint(); } 
         }
-        public Bitmap ObjectBackgroundImage
-        { 
-            get => null;
-            set { surfaceSettings.SetSurfaceBitmap(value); Paint(); } 
+        public void SetObjectBackgroundImage(Bitmap objectBackgroundImage)
+        {
+            surfaceSettings.SetSurfaceBitmap(objectBackgroundImage);
+            Paint();
         }
+
         public bool IsObjectPlain
         { 
             get => surfaceSettings.IsPlain;
@@ -66,15 +60,12 @@ namespace Filling
                 }
             }
         }
-        public Bitmap NormalMap
+        public void SetNormalMap(Bitmap normalMap)
         {
-            get => null; 
-            set
-            {
-                normalMapGeometry.SetNormalMap(value);
-                Paint();
-            }
+            normalMapGeometry.SetNormalMap(normalMap);
+            Paint();
         }
+
 
         public double K
         {
@@ -131,10 +122,10 @@ namespace Filling
             get => (int)lightSource.Position.Z;
             set
             {
-                lightSource.Position =
-                    new FPoint3D(lightSource.Position.X, lightSource.Position.Y, value);
                 lightSourceMover.StartingPoint =
-                    new FPoint3D(lightSource.Position.X, lightSource.Position.Y, value);
+                    new FPoint3D(midPoint.X, midPoint.Y, value);
+                lightSource.Position =
+                    new FPoint3D(midPoint.X, midPoint.Y, value);
                 Paint();
             } 
         }
@@ -154,16 +145,9 @@ namespace Filling
                 }
             } 
         }
-        public int FPS
-        { 
-            get => lightSourceMover.FPS;
-            set { lightSourceMover.FPS = value; }
-        }
-        public double Velocity { get => lightSourceMover.Velocity; set { lightSourceMover.Velocity = value; } }
-
-        public AppManager(PictureBox pictureBox, Action<long> setFPSCounter)
+        
+        public AppManager(PictureBox pictureBox)
         {
-            this.setFPSCounter = setFPSCounter;
             PictureBox = pictureBox;
             midPoint = new Point(PictureBox.Width / 2, PictureBox.Height / 2);
             sensitiveness = 10;
@@ -172,8 +156,7 @@ namespace Filling
             
             isWithoutNormalMap = true;
             withoutSurfaceGeometryComputer = new HalfSphereGeometry(R, midPoint);
-            normalMapGeometry = new NormalMapGeometry(Properties.Resources.Bricks);
-            //combineSurfaceGeometryComputer = new CombineNormalGeometry(withoutSurfaceGeometryComputer, normalMapGeometry);
+            normalMapGeometry = new NormalMapGeometry(Properties.Resources.Bricks, new LockBitmapCreator());
             professorNormalMapOnSphereGeometry = new ProfessorNormalMapOnSphereGeometry(
                     withoutSurfaceGeometryComputer, normalMapGeometry, 0.5);
             ISurfaceGeometryComputer surfaceGeometryComputer = withoutSurfaceGeometryComputer;
@@ -196,8 +179,6 @@ namespace Filling
 
         public void Paint()
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
             Bitmap triangulationVisualization = new Bitmap(PictureBox.Width, PictureBox.Height, PixelFormat.Format32bppArgb);
             bitmapManager.StartDrawing(triangulationVisualization);
             triangulation.FillTriangulation(activePainter.FillPolygon);
@@ -208,8 +189,6 @@ namespace Filling
             }
             bitmapManager.EndDrawing();
             PictureBox.Image = triangulationVisualization;
-            stopwatch.Stop();
-            setFPSCounter(stopwatch.ElapsedMilliseconds);
         }
 
         private SphereTriangulation triangulation;
@@ -223,13 +202,11 @@ namespace Filling
         private SurfaceSettings surfaceSettings;
         private LightSource lightSource;
         private HalfSphereGeometry withoutSurfaceGeometryComputer;
-        private CombineNormalGeometry combineSurfaceGeometryComputer;
         private ProfessorNormalMapOnSphereGeometry professorNormalMapOnSphereGeometry;
         private bool isWithoutNormalMap;
         private NormalMapGeometry normalMapGeometry;
         private LightSourceMover lightSourceMover;
         private bool isAnimation;
-        private Action<long> setFPSCounter; 
 
         private int R = 300;
         private int sensitiveness;

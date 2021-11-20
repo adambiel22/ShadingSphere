@@ -11,9 +11,9 @@ namespace Filling
 {
     public class NormalMapGeometry : ISurfaceGeometryComputer
     {
-        public NormalMapGeometry(Bitmap normalMap)
+        public NormalMapGeometry(Bitmap normalMap, IBitmapManagerCreator bitmapManagerCreator)
         {
-            bitmapManager = new LockBitmap();
+            bitmapManager = bitmapManagerCreator.CreateBitmapManager();
             bitmapManager.StartDrawing(normalMap);
         }
 
