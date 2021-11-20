@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Filling
 {
-    public class TriangleInterpolationPainter : MyPainter
+    public class TriangleInterpolationPainter : Painter
     {
-        public TriangleInterpolationPainter(IPixelSetter pixelSetter, IColorComputer colorComputer) 
+        public TriangleInterpolationPainter(IPixelSetter pixelSetter, IColorComputer colorComputer, IPainterCreator painterCreator) 
             : base(pixelSetter, colorComputer)
         {
+            this.painterCreator = painterCreator;
         }
 
         public override void FillPolygon(Point[] polygon)
@@ -23,8 +24,16 @@ namespace Filling
             TriangleInterpolationColorComputer triangleColorComputer =
                 new TriangleInterpolationColorComputer(ColorComputer);
             triangleColorComputer.Triangle = polygon;
-            MyPainter painter = new MyPainter(PixelSetter, triangleColorComputer);
+            Painter painter = painterCreator.CreatePainter(PixelSetter, triangleColorComputer);
             painter.FillPolygon(polygon);
         }
+
+        public override void DrawLine(Point point1, Point point2, Color color)
+        {
+            Painter painter = painterCreator.CreatePainter(PixelSetter, ColorComputer);
+            painter.DrawLine(point1, point2, color);
+        }
+
+        private IPainterCreator painterCreator;
     }
 }

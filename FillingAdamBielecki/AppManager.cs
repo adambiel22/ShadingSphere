@@ -162,14 +162,15 @@ namespace Filling
             ISurfaceGeometryComputer surfaceGeometryComputer = withoutSurfaceGeometryComputer;
             
             surfaceSettings = new SurfaceSettings(0.5, 0.8, Color.Red,
-                Properties.Resources.landscape, true, 40, surfaceGeometryComputer);
+                Properties.Resources.landscape, true, 40, surfaceGeometryComputer, R, midPoint);
             Vector3D lightStartPosition = new Vector3D(midPoint.X, midPoint.Y, 500);
             lightSource = new LightSource(lightStartPosition, Color.White);
             colorComputer = new ReflexColorComputer(surfaceSettings, lightSource);
 
             bitmapManager = new LockBitmap();
             casualPainter = new MyPainter(bitmapManager, colorComputer);
-            triangleInterpolationPainter = new TriangleInterpolationPainter(bitmapManager, colorComputer);
+            triangleInterpolationPainter =
+                new TriangleInterpolationPainter(bitmapManager, colorComputer, new MyPainterCreator());
             isInterpolation = false;
             activePainter = casualPainter;
 

@@ -90,6 +90,7 @@ namespace Filling
         private void backgroundFromImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "../../../Resources";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 appManager.SetObjectBackgroundImage(new Bitmap(openFileDialog.FileName));

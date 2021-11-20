@@ -30,11 +30,6 @@ namespace Filling
             double v2 = Vector3D.CrossProduct(v1Vector, v0Vector).Z / 2;
             double sum = v0 + v1 + v2;
 
-            if (sum == 0)
-            {
-                Debug.WriteLine("stop");
-            }
-
             double v0influence = v0 / sum;
             double v1influence = v1 / sum;
             double v2influence = v2 / sum;

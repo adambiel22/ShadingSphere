@@ -25,19 +25,6 @@ namespace Filling
         public Vector3D ComputeNormalVector(int x, int y)
         {
             Vector3D sphereVector = halfSphereGeometry.ComputeNormalVector(x, y);
-
-            if ( x == 438 && y == 299)
-            {
-                Debug.WriteLine("stop");
-            }
-
-            int rectY = (int)((normalMapGeometry.Height - 1) *
-                (1 + Vector3D.Cos(sphereVector, new Vector3D(0, 1, 0))) / 2);
-            int rectX = (sphereVector.X == 0 && sphereVector.Z == 0)
-                ? 0
-                : (normalMapGeometry.Width - normalMapGeometry.Height) / 2 +
-                (int)((normalMapGeometry.Height - 1) *
-                (1 + Vector3D.Cos(new Vector3D(sphereVector.X, 0, sphereVector.Z), new Vector3D(1, 0, 0))) / 2);
             Vector3D normalMapVector = normalMapGeometry.ComputeNormalVector(
                 BitmapOnSphereWrapper.RectX(sphereVector, normalMapGeometry.Width, normalMapGeometry.Height),
                 BitmapOnSphereWrapper.RectY(sphereVector, normalMapGeometry.Height));
