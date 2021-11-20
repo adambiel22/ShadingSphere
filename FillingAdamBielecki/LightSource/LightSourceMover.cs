@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Filling
 {
@@ -11,14 +12,21 @@ namespace Filling
     {
         public FPoint3D StartingPoint { get; set; }
         public double Velocity { get; set; }
-        public int FPS { get => 1000 / timer.Interval; set { timer.Interval = 1000 / value; } }
-        public int MinTime { get; set; }
-        public int MaxTime { get; set; }
+        public int FPS
+        {
+            get => 1000 / timer.Interval;
+            set
+            {
+                timer.Interval = 1000 / value;
+            }
+        }
+        public double MinTime { get; set; }
+        public double MaxTime { get; set; }
         public LightSource LightSource { get; set; }
         public Action PaintFrame { get; set; }
 
         public LightSourceMover(FPoint3D startingPoint, double velocity, int fps,
-            int minTime, int maxTime, LightSource lightSource, Action paintFrame)
+            double minTime, double maxTime, LightSource lightSource, Action paintFrame)
         {
             timer = new Timer();
             StartingPoint = startingPoint;
@@ -26,7 +34,7 @@ namespace Filling
             FPS = fps;
             MinTime = minTime;
             MaxTime = maxTime;
-            time = minTime;
+            time = MinTime;
             LightSource = lightSource;
             timer.Tick += NextFrame;
             PaintFrame = paintFrame;
@@ -47,7 +55,7 @@ namespace Filling
         }
         protected abstract void Move();
 
-        protected int time;
+        protected double time;
         private Timer timer;
     }
 }

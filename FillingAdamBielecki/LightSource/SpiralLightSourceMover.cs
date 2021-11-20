@@ -18,9 +18,11 @@ namespace Filling
 
         protected override void Move()
         {
+            double angle = time * Velocity;
+
             LightSource.Position = new FPoint3D(
-                SpiralFactor * time * Velocity * Math.Cos(time * Velocity) + StartingPoint.X,
-                SpiralFactor * time * Velocity * Math.Sin(time * Velocity) + StartingPoint.Y,
+                SpiralFactor * angle * Math.Cos(angle) + StartingPoint.X,
+                SpiralFactor * angle * Math.Sin(angle) + StartingPoint.Y,
                 StartingPoint.Z);
         }
 
