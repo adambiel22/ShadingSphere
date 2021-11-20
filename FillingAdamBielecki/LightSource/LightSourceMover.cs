@@ -10,7 +10,7 @@ namespace Filling
 {
     public abstract class LightSourceMover
     {
-        public FPoint3D StartingPoint { get; set; }
+        public Vector3D StartingPoint { get; set; }
         public double Velocity { get; set; }
         public int FPS
         {
@@ -25,7 +25,7 @@ namespace Filling
         public LightSource LightSource { get; set; }
         public Action PaintFrame { get; set; }
 
-        public LightSourceMover(FPoint3D startingPoint, double velocity, int fps,
+        public LightSourceMover(Vector3D startingPoint, double velocity, int fps,
             double minTime, double maxTime, LightSource lightSource, Action paintFrame)
         {
             timer = new Timer();

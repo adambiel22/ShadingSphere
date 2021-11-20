@@ -58,7 +58,7 @@ namespace Filling
         {
             foreach(var i in movingVerticies)
             {
-                triangles[i.Item1, i.Item2] = new FPoint3D(e.Location.X, e.Location.Y,
+                triangles[i.Item1, i.Item2] = new Vector3D(e.Location.X, e.Location.Y,
                     Math.Sqrt(R * R - (e.Location.X - MidPoint.X) * (e.Location.X - MidPoint.X) -
                      (e.Location.Y - MidPoint.Y) * (e.Location.Y - MidPoint.Y)));
             }

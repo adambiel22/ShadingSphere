@@ -38,7 +38,9 @@ namespace Filling
                 : (normalMapGeometry.Width - normalMapGeometry.Height) / 2 +
                 (int)((normalMapGeometry.Height - 1) *
                 (1 + Vector3D.Cos(new Vector3D(sphereVector.X, 0, sphereVector.Z), new Vector3D(1, 0, 0))) / 2);
-            Vector3D normalMapVector = normalMapGeometry.ComputeNormalVector(rectX, rectY);
+            Vector3D normalMapVector = normalMapGeometry.ComputeNormalVector(
+                BitmapOnSphereWrapper.RectX(sphereVector, normalMapGeometry.Width, normalMapGeometry.Height),
+                BitmapOnSphereWrapper.RectY(sphereVector, normalMapGeometry.Height));
             Vector3D binormalVector =
                     sphereVector.X == 0 && sphereVector.Y == 0 && sphereVector.Z == 1
                     ? new Vector3D(0, 1, 0)

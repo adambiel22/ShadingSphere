@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
@@ -22,12 +19,12 @@ namespace Filling
 
         private void generateTriangulation()
         {
-            triangles = new FPoint3D[(int)Math.Pow(4, N), 3];
-            FPoint3D v_0 = new FPoint3D(0, 0, R);
-            FPoint3D v_1 = new FPoint3D(R, 0, 0);
-            FPoint3D v_2 = new FPoint3D(0, R, 0);
-            FPoint3D v_3 = new FPoint3D(-R, 0, 0);
-            FPoint3D v_4 = new FPoint3D(0, -R, 0);
+            triangles = new Vector3D[(int)Math.Pow(4, N), 3];
+            Vector3D v_0 = new Vector3D(0, 0, R);
+            Vector3D v_1 = new Vector3D(R, 0, 0);
+            Vector3D v_2 = new Vector3D(0, R, 0);
+            Vector3D v_3 = new Vector3D(-R, 0, 0);
+            Vector3D v_4 = new Vector3D(0, -R, 0);
             int tindex = 0;
             recursion(v_1, v_2, v_0, 1, ref tindex);
             recursion(v_2, v_3, v_0, 1, ref tindex);
@@ -42,7 +39,7 @@ namespace Filling
             }
         }
 
-        private void recursion(FPoint3D v_0, FPoint3D v_1, FPoint3D v_2, int n, ref int tindex)
+        private void recursion(Vector3D v_0, Vector3D v_1, Vector3D v_2, int n, ref int tindex)
         {
             if (n == N)
             {
@@ -53,9 +50,9 @@ namespace Filling
                 return;
             }
 
-            FPoint3D w_0 = R * (v_0 + v_1) / FPoint3D.Dist(v_0 + v_1);
-            FPoint3D w_1 = R * (v_1 + v_2) / FPoint3D.Dist(v_1 + v_2);
-            FPoint3D w_2 = R * (v_2 + v_0) / FPoint3D.Dist(v_2 + v_0);
+            Vector3D w_0 = R * (v_0 + v_1) / Vector3D.Dist(v_0 + v_1);
+            Vector3D w_1 = R * (v_1 + v_2) / Vector3D.Dist(v_1 + v_2);
+            Vector3D w_2 = R * (v_2 + v_0) / Vector3D.Dist(v_2 + v_0);
 
             recursion(v_0, w_0, w_2, n + 1, ref tindex);
             recursion(w_0, v_1, w_1, n + 1, ref tindex);
@@ -76,16 +73,6 @@ namespace Filling
 
         public void FillTriangulation(Action<Point[]> fillTriangle)
         {
-            //for (int i = 0; i < triangles.GetLength(0); i++)
-            //{
-            //    fillTriangle(new Point[]
-            //    {
-            //        triangles[i,0],
-            //        triangles[i,1],
-            //        triangles[i,2]
-            //    });
-            //}
-
             Parallel.For(0, triangles.GetLength(0),
                 (int i) =>
                 {
@@ -98,6 +85,6 @@ namespace Filling
                 });
         }
 
-        protected FPoint3D[,] triangles;
+        protected Vector3D[,] triangles;
     }
 }

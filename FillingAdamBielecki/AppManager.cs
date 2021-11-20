@@ -123,9 +123,9 @@ namespace Filling
             set
             {
                 lightSourceMover.StartingPoint =
-                    new FPoint3D(midPoint.X, midPoint.Y, value);
+                    new Vector3D(midPoint.X, midPoint.Y, value);
                 lightSource.Position =
-                    new FPoint3D(midPoint.X, midPoint.Y, value);
+                    new Vector3D(midPoint.X, midPoint.Y, value);
                 Paint();
             } 
         }
@@ -163,7 +163,7 @@ namespace Filling
             
             surfaceSettings = new SurfaceSettings(0.5, 0.8, Color.Red,
                 Properties.Resources.landscape, true, 40, surfaceGeometryComputer);
-            FPoint3D lightStartPosition = new FPoint3D(midPoint.X, midPoint.Y, 500);
+            Vector3D lightStartPosition = new Vector3D(midPoint.X, midPoint.Y, 500);
             lightSource = new LightSource(lightStartPosition, Color.White);
             colorComputer = new ReflexColorComputer(surfaceSettings, lightSource);
 

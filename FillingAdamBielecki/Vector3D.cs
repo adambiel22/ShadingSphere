@@ -22,6 +22,8 @@ namespace Filling
 
         public static Vector3D operator +(Vector3D a, Vector3D b)
             => new Vector3D(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+        public static Vector3D operator +(Vector3D a, System.Drawing.Point b)
+            => new Vector3D(a.X + b.X, a.Y + b.Y, a.Z);
         public static double operator *(Vector3D a, Vector3D b)
             => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
         public static Vector3D operator -(Vector3D a, Vector3D b)
@@ -35,8 +37,8 @@ namespace Filling
                 vector.X * matrix[0, 0] + vector.Y * matrix[0, 1] + vector.Z * matrix[0, 2],
                 vector.X * matrix[1, 0] + vector.Y * matrix[1, 1] + vector.Z * matrix[1, 2],
                 vector.X * matrix[2, 0] + vector.Y * matrix[2, 1] + vector.Z * matrix[2, 2]);
-        public static implicit operator FPoint3D(Vector3D a)
-            => new FPoint3D(a.X, a.Y, a.Z);
+        public static implicit operator System.Drawing.Point(Vector3D a)
+            => new System.Drawing.Point((int)a.X, (int)a.Y);
 
         public static double Cos(Vector3D a, Vector3D b)
         {
@@ -46,6 +48,11 @@ namespace Filling
         public static Vector3D CrossProduct(Vector3D p0, Vector3D p1)
         {
             return new Vector3D(p0.Y * p1.Z - p0.Z * p1.Y, p0.Z * p1.X - p0.X * p1.Z, p0.X * p1.Y - p0.Y * p1.X);
+        }
+
+        public static double Dist(Vector3D a)
+        {
+            return Math.Sqrt(a.X * a.X + a.Y * a.Y + a.Z * a.Z);
         }
 
         public override string ToString()
