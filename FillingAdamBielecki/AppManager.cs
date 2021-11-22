@@ -43,6 +43,15 @@ namespace Filling
             }
         }
 
+        public int M_R
+        {
+            get => radarColorComputer.M;
+            set
+            {
+                radarColorComputer.M = value;
+            }
+        }
+
         public bool IsWithoutNormalMap
         {
             get => isWithoutNormalMap;
@@ -145,7 +154,78 @@ namespace Filling
                 }
             } 
         }
-        
+        public int LightCombination
+        { 
+            get => lightCombination;
+
+            set
+            {
+                if (value == 0)
+                {
+                    colorComputer = reflexColorComputer;
+                    lightCombination = value;
+                    Paint();
+                }
+                else if (value == 1)
+                {
+                    colorComputer = radarColorComputer;
+                    lightCombination = value;
+                    Paint();
+                }
+                else if (value == 2)
+                {
+                    colorComputer = combineColorComputer;
+                    lightCombination = value;
+                    Paint();
+                }
+                lightCombination = value;
+            }
+        }
+
+        public void SetLightCombination(int i)
+        {
+            if (i == 0)
+            {
+                casualPainter.ColorComputer = reflexColorComputer;
+                triangleInterpolationPainter.ColorComputer = reflexColorComputer;
+                if (lightCombination != 0)
+                {
+                    PictureBox.MouseMove -= PictureBox_MouseMove;
+                }
+                lightCombination = i;
+                Paint();
+            }
+            else if (i == 1)
+            {
+                activePainter.ColorComputer = radarColorComputer;
+                triangleInterpolationPainter.ColorComputer = radarColorComputer;
+                if (lightCombination == 0)
+                {
+                    PictureBox.MouseMove += PictureBox_MouseMove;
+                }
+                lightCombination = i;
+                Paint();
+            }
+            else if (i == 2)
+            {
+                activePainter.ColorComputer = combineColorComputer;
+                triangleInterpolationPainter.ColorComputer = combineColorComputer;
+                if (lightCombination == 0)
+                {
+                    PictureBox.MouseMove += PictureBox_MouseMove;
+                }
+                lightCombination = i;
+                Paint();
+            }
+            lightCombination = i;
+        }
+
+        private void PictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            radarColorComputer.ReflexPoint = e.Location;
+            Paint();
+        }
+
         public AppManager(PictureBox pictureBox)
         {
             PictureBox = pictureBox;
@@ -165,7 +245,10 @@ namespace Filling
                 Properties.Resources.landscape, true, 40, surfaceGeometryComputer, R, midPoint);
             Vector3D lightStartPosition = new Vector3D(midPoint.X, midPoint.Y, 500);
             lightSource = new LightSource(lightStartPosition, Color.White);
-            colorComputer = new ReflexColorComputer(surfaceSettings, lightSource);
+            reflexColorComputer = new ReflexColorComputer(surfaceSettings, lightSource);
+            radarColorComputer = new ReflectorColorComputer(surfaceSettings, 1200, 35, new Point(midPoint.X + 100, midPoint.Y + 100), Color.Red);
+            combineColorComputer = new CombineColorComputer(reflexColorComputer, radarColorComputer);
+            colorComputer = reflexColorComputer;
 
             bitmapManager = new LockBitmap();
             casualPainter = new MyPainter(bitmapManager, colorComputer);
@@ -176,6 +259,7 @@ namespace Filling
 
             lightSourceMover = new SpiralLightSourceMover(lightStartPosition, 5 * Math.PI / 180, 40,
                 36, 36*15, lightSource, Paint, 20);
+            lightCombination = 0;
         }
 
         public void Paint()
@@ -200,6 +284,9 @@ namespace Filling
         private TriangleInterpolationPainter triangleInterpolationPainter;
         private bool isInterpolation;
         private IColorComputer colorComputer;
+        private IColorComputer reflexColorComputer;
+        private ReflectorColorComputer radarColorComputer;
+        private IColorComputer combineColorComputer;
         private SurfaceSettings surfaceSettings;
         private LightSource lightSource;
         private HalfSphereGeometry withoutSurfaceGeometryComputer;
@@ -208,6 +295,7 @@ namespace Filling
         private NormalMapGeometry normalMapGeometry;
         private LightSourceMover lightSourceMover;
         private bool isAnimation;
+        private int lightCombination;
 
         private int R = 300;
         private int sensitiveness;

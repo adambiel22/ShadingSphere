@@ -59,10 +59,15 @@ namespace Filling
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.triangulationCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.bothRadioButton = new System.Windows.Forms.RadioButton();
+            this.onlyReflectorRadioButton = new System.Windows.Forms.RadioButton();
+            this.onlySunRadioButton = new System.Windows.Forms.RadioButton();
             this.animationCheckBox = new System.Windows.Forms.CheckBox();
             this.heightTrackBar = new System.Windows.Forms.TrackBar();
             this.heightLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangulationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k_dTrackBar)).BeginInit();
@@ -74,6 +79,7 @@ namespace Filling
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -395,6 +401,11 @@ namespace Filling
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.trackBar1);
+            this.groupBox4.Controls.Add(this.bothRadioButton);
+            this.groupBox4.Controls.Add(this.onlyReflectorRadioButton);
+            this.groupBox4.Controls.Add(this.onlySunRadioButton);
             this.groupBox4.Controls.Add(this.animationCheckBox);
             this.groupBox4.Controls.Add(this.heightTrackBar);
             this.groupBox4.Controls.Add(this.heightLabel);
@@ -403,10 +414,46 @@ namespace Filling
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Location = new System.Drawing.Point(924, 651);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(283, 161);
+            this.groupBox4.Size = new System.Drawing.Size(283, 309);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Light Source";
+            // 
+            // bothRadioButton
+            // 
+            this.bothRadioButton.AutoSize = true;
+            this.bothRadioButton.Location = new System.Drawing.Point(6, 227);
+            this.bothRadioButton.Name = "bothRadioButton";
+            this.bothRadioButton.Size = new System.Drawing.Size(61, 24);
+            this.bothRadioButton.TabIndex = 24;
+            this.bothRadioButton.TabStop = true;
+            this.bothRadioButton.Text = "Both";
+            this.bothRadioButton.UseVisualStyleBackColor = true;
+            this.bothRadioButton.CheckedChanged += new System.EventHandler(this.bothRadioButton_CheckedChanged);
+            // 
+            // onlyReflectorRadioButton
+            // 
+            this.onlyReflectorRadioButton.AutoSize = true;
+            this.onlyReflectorRadioButton.Location = new System.Drawing.Point(6, 197);
+            this.onlyReflectorRadioButton.Name = "onlyReflectorRadioButton";
+            this.onlyReflectorRadioButton.Size = new System.Drawing.Size(124, 24);
+            this.onlyReflectorRadioButton.TabIndex = 23;
+            this.onlyReflectorRadioButton.TabStop = true;
+            this.onlyReflectorRadioButton.Text = "Only Reflector";
+            this.onlyReflectorRadioButton.UseVisualStyleBackColor = true;
+            this.onlyReflectorRadioButton.CheckedChanged += new System.EventHandler(this.onlyReflectorRadioButton_CheckedChanged);
+            // 
+            // onlySunRadioButton
+            // 
+            this.onlySunRadioButton.AutoSize = true;
+            this.onlySunRadioButton.Location = new System.Drawing.Point(8, 167);
+            this.onlySunRadioButton.Name = "onlySunRadioButton";
+            this.onlySunRadioButton.Size = new System.Drawing.Size(88, 24);
+            this.onlySunRadioButton.TabIndex = 22;
+            this.onlySunRadioButton.TabStop = true;
+            this.onlySunRadioButton.Text = "Only Sun";
+            this.onlySunRadioButton.UseVisualStyleBackColor = true;
+            this.onlySunRadioButton.CheckedChanged += new System.EventHandler(this.onlySunRadioButton_CheckedChanged);
             // 
             // animationCheckBox
             // 
@@ -449,6 +496,26 @@ namespace Filling
             this.label6.TabIndex = 14;
             this.label6.Text = "Height";
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(6, 267);
+            this.trackBar1.Maximum = 1000;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(239, 56);
+            this.trackBar1.TabIndex = 25;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 500;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 254);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 20);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "M_R";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -478,6 +545,7 @@ namespace Filling
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heightTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -518,6 +586,11 @@ namespace Filling
         private System.Windows.Forms.Label kLabel;
         private System.Windows.Forms.TrackBar kTrackBar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton bothRadioButton;
+        private System.Windows.Forms.RadioButton onlyReflectorRadioButton;
+        private System.Windows.Forms.RadioButton onlySunRadioButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

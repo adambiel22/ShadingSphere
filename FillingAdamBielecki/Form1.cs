@@ -15,6 +15,10 @@ namespace Filling
 
             appManager = new AppManager(pictureBox);
 
+            onlySunRadioButton.Checked = appManager.LightCombination == 0;
+            onlyReflectorRadioButton.Checked = appManager.LightCombination == 1;
+            bothRadioButton.Checked = appManager.LightCombination == 2;
+
             plainColorRadioButton.Checked = appManager.IsObjectPlain;
             backgroundFromImageRadioButton.Checked = !appManager.IsObjectPlain;
             plainColorButton.BackColor = appManager.ObjectBacgroundColor;
@@ -112,6 +116,25 @@ namespace Filling
             if (normalMapFromImageRadioButton.Checked) appManager.IsWithoutNormalMap = false;
         }
 
+
+        private void onlySunRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (onlySunRadioButton.Checked) appManager.SetLightCombination(0);
+        }
+
+        private void onlyReflectorRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (onlyReflectorRadioButton.Checked)
+            {
+                appManager.SetLightCombination(1);
+            }
+        }
+
+        private void bothRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (bothRadioButton.Checked) appManager.SetLightCombination(2);
+        }
+
         private void kTrackBar_Scroll(object sender, EventArgs e)
         {
             appManager.K = (double)kTrackBar.Value / kTrackBar.Maximum;
@@ -155,6 +178,11 @@ namespace Filling
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             Debug.WriteLine(e.Location);
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            appManager.M_R = trackBar1.Value;
         }
     }
 }
